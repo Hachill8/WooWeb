@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WOO</title>
+
+	<meta chartset="UTF-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="icon" type="image/png" href="assets/AT-pro-logo.png"/>
+
+	<!-- Import lib -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+	<link rel="stylesheet" type="text/css" href="fontawesome-free/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<!-- End import lib -->
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body class="overlay-scrollbar">
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <!-- nav left -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link">
+                    <i class="fas fa-bars" onclick="collapseSidebar()"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <img src="assets/greenhouse-effect.png" alt="WOO LOGO" class="logo">
+            </li>
+        </ul>
+        <!-- end nav left -->
+        <ul class="navbar-nav">
+             
+            <li class="logo logo-light" style="color:black; font-size:25px; margin-top: 5px; margin-left: -10px;">VeryFarm</li>
+            <li class="logo logo-dark" style="color: white; font-size:25px; margin-top: 5px; margin-left: -10px;">VeryFarm</li>    
+            
+        </ul>
+        <!-- form -->
+        <form class="navbar-search">
+            <input type="text" name="Search" class="navbar-search-input" placeholder="搜尋GOGOGO...">
+            <i class="fas fa-search"></i>    
+        </form>
+        <!-- end form -->
+        <!-- nav right -->
+        <ul class="navbar-nav nav-right">
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="switchTheme()">
+                    <i class="fas fa-moon dark-icon"></i>
+                    <i class="fas fa-sun light-icon"></i>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link">
+                    <i class="fas fa-bell dropdown-toggle" data-toggle="notification-menu"></i>
+                    <span class="navbar-badge">15</span>
+                </a>
+                <ul id="notification-menu" class="dropdown-menu notification-menu">
+                    <div class="dropdown-menu-header">
+                        <span>
+                            通知
+                        </span>
+                    </div>
+                    <div class="dropdown-menu-content overlay-scrollbar">
+                        <li class="dropdown-menu-item">
+                            <a href="#" class="dropdown-menu-link">
+                                <div>
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span>
+                                    A1的番茄可以收成了喔!記得要去採收知道嗎?
+                                    <br>
+                                    <span>
+                                        2021/01/01
+                                    </span>
+                                </span>
+                                
+                            </a>
+                        </li> 
+                        <li class="dropdown-menu-item">
+                            <a href="#" class="dropdown-menu-link">
+                                <div>
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span>
+                                    A1的番茄可以收成了喔!記得要去採收知道嗎?
+                                    <br>
+                                    <span>
+                                        2021/01/01
+                                    </span>
+                                </span>
+                                
+                            </a>
+                        </li> 
+                        <li class="dropdown-menu-item">
+                            <a href="#" class="dropdown-menu-link">
+                                <div>
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span>
+                                    A1的番茄可以收成了喔!記得要去採收知道嗎?
+                                    <br>
+                                    <span>
+                                        2021/01/01
+                                    </span>
+                                </span>
+                                
+                            </a>
+                        </li> 
+                        <li class="dropdown-menu-item">
+                            <a href="#" class="dropdown-menu-link">
+                                <div>
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span>
+                                    A1的番茄可以收成了喔!記得要去採收知道嗎?
+                                    <br>
+                                    <span>
+                                        2021/01/01
+                                    </span>
+                                </span>
+                                
+                            </a>
+                        </li>   
+                        <li class="dropdown-menu-item">
+                            <a href="#" class="dropdown-menu-link">
+                                <div>
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span>
+                                    A1的番茄可以收成了喔!記得要去採收知道嗎?
+                                    <br>
+                                    <span>
+                                        2021/01/01
+                                    </span>
+                                </span>
+                                
+                            </a>
+                        </li> 
+                        <li class="dropdown-menu-item">
+                            <a href="#" class="dropdown-menu-link">
+                                <div>
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span>
+                                    A1的番茄可以收成了喔!記得要去採收知道嗎?
+                                    <br>
+                                    <span>
+                                        2021/01/01
+                                    </span>
+                                </span>
+                                
+                            </a>
+                        </li> 
+                        <li class="dropdown-menu-item">
+                            <a href="#" class="dropdown-menu-link">
+                                <div>
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span>
+                                    A1的番茄可以收成了喔!記得要去採收知道嗎?
+                                    <br>
+                                    <span>
+                                        2021/01/01
+                                    </span>
+                                </span>
+                                
+                            </a>
+                        </li> 
+                        <li class="dropdown-menu-item">
+                            <a href="#" class="dropdown-menu-link">
+                                <div>
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span>
+                                    A1的番茄可以收成了喔!記得要去採收知道嗎?
+                                    <br>
+                                    <span>
+                                        2021/01/01
+                                    </span>
+                                </span>
+                                
+                            </a>
+                        </li>
+                        <li class="dropdown-menu-item">
+                            <a href="#" class="dropdown-menu-link">
+                                <div>
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span>
+                                    A1的番茄可以收成了喔!記得要去採收知道嗎?
+                                    <br>
+                                    <span>
+                                        2021/01/01
+                                    </span>
+                                </span>
+                                
+                            </a>
+                        </li> 
+                        <li class="dropdown-menu-item">
+                            <a href="#" class="dropdown-menu-link">
+                                <div>
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span>
+                                    A1的番茄可以收成了喔!記得要去採收知道嗎?
+                                    <br>
+                                    <span>
+                                        2021/01/01
+                                    </span>
+                                </span>
+                                
+                            </a>
+                        </li> 
+                        <li class="dropdown-menu-item">
+                            <a href="#" class="dropdown-menu-link">
+                                <div>
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span>
+                                    A1的番茄可以收成了喔!記得要去採收知道嗎?
+                                    <br>
+                                    <span>
+                                        2021/01/01
+                                    </span>
+                                </span>
+                                
+                            </a>
+                        </li> 
+                        <li class="dropdown-menu-item">
+                            <a href="#" class="dropdown-menu-link">
+                                <div>
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span>
+                                    A1的番茄可以收成了喔!記得要去採收知道嗎?
+                                    <br>
+                                    <span>
+                                        2021/01/01
+                                    </span>
+                                </span>
+                                
+                            </a>
+                        </li>                
+                    </div>
+                    <div class="dropdown-menu-footer">
+                        <span>
+                            查看所有通知
+                        </span>
+                    </div>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <div class="avt dropdown">
+                    <img src="assets/user.png" alt="User image" class="dropdown-toggle" data-toggle="user-menu">
+                    <ul id="user-menu" class="dropdown-menu">
+                        <li class="dropdown-menu-item">
+                            <a href="#nowhere" class="dropdown-menu-link">
+                                <div>
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <span>個人資料</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-menu-item">
+                            <a href="#nowhere" class="dropdown-menu-link">
+                                <div>
+                                    <i class="fas fa-cog"></i>
+                                </div>
+                                <span>設定</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-menu-item">
+                            <a href="#nowhere" class="dropdown-menu-link">
+                                <div>
+                                    <i class="fas fa-sign-out-alt"></i>
+                                </div>
+                                <span>登出</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </li>
+        </ul>
+        <!-- end nav right -->
+
+    </div>
+    <!-- End navbar -->
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul class="sidebar-nav">
+            <li class="sidebar-nav-item">
+                <a href="#" class="sidebar-nav-link active">
+                    <div>
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <span>
+                        Dashboard
+                    </span>
+                </a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a href="#" class="sidebar-nav-link">
+                    <div>
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <span>
+                        History
+                    </span>
+                </a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a href="#" class="sidebar-nav-link">
+                    <div>
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <span>
+                        Traceability
+                    </span>
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+    <!-- End sidebar -->
+    <!-- Main content -->
+    <div class="wrapper">
+        <div class="row">
+            <div class="col-3 col-m-6 col-sm-6">
+                <div class="counter bg-tem">
+                    <p>
+                        <i class="fas fa-temperature-high"></i>
+                        溫度
+                    </p>
+                    <h2>18℃</h2>
+                    <h6>2021/01/01 13:00</h6>
+                </div>
+            </div>
+            <div class="col-3 col-m-6 col-sm-6">
+                <div class="counter bg-hum">
+                    <p>
+                        <i class="fas fa-tint"></i>
+                        濕度
+                    </p>
+                    <h2>1024</h2>
+                    <h6>2021/01/01 11:00</h6>
+                </div>
+            </div>
+            <div class="col-3 col-m-6 col-sm-6">
+                <div class="counter bg-light">
+                    <p>
+                        <i class="fas fa-cloud-sun"></i>
+                        光照
+                    </p>
+                    <h2>900</h2>
+                    <h6>2021/01/01 11:00</h6>
+                </div>
+            </div>
+            <div class="col-3 col-m-6 col-sm-6">
+                <div class="counter bg-soil">
+                    <p>
+                        <i class="fas fa-seedling"></i>
+                        土壤濕度
+                    </p>
+                    <h2>1024</h2>
+                    <h6>2021/01/01 12:00</h6>
+                </div>
+        
+        </div>
+            <div class="col-12 col-m-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            sensor1|sensor2|氣象站 溫度比較
+                        </h3>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8 col-m-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            今日做的事
+                        </h3>
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>作物</th>
+                                    <th>區域</th>
+                                    <th>事項</th>
+                                    <th>時間</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>番茄</td>
+                                    <td>A10</td>
+                                    <td>
+                                        <span class="dot">
+                                            <i class="bg-planting"></i>
+                                            定植
+                                        </span>
+                                    </td>
+                                    <td>2021/01/01 08:00</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>奶白</td>
+                                    <td>B10</td>
+                                    <td>
+                                        <span class="dot">
+                                            <i class="bg-harvest"></i>
+                                            收成
+                                        </span>
+                                    </td>
+                                    <td>2021/01/01 14:00</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>青江菜</td>
+                                    <td>C03</td>
+                                    <td>
+                                        <span class="dot">
+                                            <i class="bg-planting"></i>
+                                            定植
+                                        </span>
+                                    </td>
+                                    <td>2021/01/01 15:00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 col-m-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            每日濕度
+                        </h3>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="barChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        
+
+        
+            <div class="col-6 col-m-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            sensor1 溫度、濕度比較
+                        </h3>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="lineChart2"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-m-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            sensor2 溫度、濕度比較
+                        </h3>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="lineChart3"></canvas>
+                    </div>
+                </div>
+            </div>
+        
+
+        
+            <div class="col-12 col-m-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            sensor1|sensor2 濕度比較
+                        </h3>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="lineChart4"></canvas>
+                    </div>
+                </div>
+            </div>
+       
+        
+
+        
+
+    </div>
+    <!-- End main content -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="mainpage.js"></script>
+    
+</body>
+</html>
