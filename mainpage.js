@@ -58,6 +58,10 @@ function collapseSidebar() {
 	body.classList.toggle('sidebar-expand')
 }
 
+function showContent(){
+	
+}
+
 window.onclick = function(event) {
 	openCloseDropdown(event)
 }

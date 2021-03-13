@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>WOO</title>
@@ -12,9 +12,174 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 	<!-- End import lib -->
 
+    <!--date range-->
 	<link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>    
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>    
+    
+    <script>
+    $(function() {
+    $("#datepicker1").datepicker({   
+    //可使用下拉式選單 - 月份   
+    changeMonth : true,  
+    //可使用下拉式選單 - 年份   
+    changeYear : true,   
+    //設定 下拉式選單月份 在 年份的後面   
+    showMonthAfterYear : true    });
+    $("#datepicker2").datepicker({   
+    //可使用下拉式選單 - 月份   
+    changeMonth : true,  
+    //可使用下拉式選單 - 年份   
+    changeYear : true,   
+    //設定 下拉式選單月份 在 年份的後面   
+    showMonthAfterYear : true    });   
+    });
+    
+    $(function() {
 
+    ( function( factory ) {  
+    if ( typeof define === "function" && define.amd ) {   
+    // AMD. Register as an anonymous module.   
+    define( [ "../widgets/datepicker" ], factory );   
+    } else {  
+    // Browser globals  
+    factory( jQuery.datepicker1 );   
+    }  
+    }( function( datepicker1 ) {   
+    datepicker1.regional[ "zh-TW" ] = {  
+    closeText: "關閉",   
+    prevText: "&#x3C;上個月",   
+    nextText: "下個月&#x3E;",   
+    currentText: "今天",  
+    monthNames: [ "一月","二月","三月","四月","五月","六月",
+    "七月","八月","九月","十月","十一月","十二月" ],
+    monthNamesShort: [ "一月","二月","三月","四月","五月","六月",
+    "七月","八月","九月","十月","十一月","十二月" ],
+    dayNames: [ "星期日","星期一","星期二","星期三","星期四","星期五","星期六" ],   
+    dayNamesShort: [ "週日","週一","週二","週三","週四","週五","週六" ],
+    dayNamesMin: [ "日","一","二","三","四","五","六" ],
+    weekHeader: "週",
+    dateFormat: "yy-mm-dd",
+    firstDay: 1,  
+    isRTL: false,    
+    showMonthAfterYear: true,    
+    yearSuffix: "年" };    
+    datepicker1.setDefaults( datepicker.regional[ "zh-TW" ] );   
+    return datepicker1.regional[ "zh-TW" ];   
+    } ) );
+
+    ( function( factory ) {  
+    if ( typeof define === "function" && define.amd ) {   
+    // AMD. Register as an anonymous module.   
+    define( [ "../widgets/datepicker" ], factory );   
+    } else {  
+    // Browser globals  
+    factory( jQuery.datepicker1 );   
+    }  
+    }( function( datepicker2 ) {   
+    datepicker2.regional[ "zh-TW" ] = {  
+    closeText: "關閉",   
+    prevText: "&#x3C;上個月",   
+    nextText: "下個月&#x3E;",   
+    currentText: "今天",   
+    monthNames: [ "一月","二月","三月","四月","五月","六月",    
+    "七月","八月","九月","十月","十一月","十二月" ],   
+    monthNamesShort: [ "一月","二月","三月","四月","五月","六月",  
+    "七月","八月","九月","十月","十一月","十二月" ],   
+    dayNames: [ "星期日","星期一","星期二","星期三","星期四","星期五","星期六" ],   
+    dayNamesShort: [ "週日","週一","週二","週三","週四","週五","週六" ],
+    dayNamesMin: [ "日","一","二","三","四","五","六" ],
+    weekHeader: "週",
+    dateFormat: "yy-mm-dd",
+    firstDay: 1,   
+    isRTL: false,   
+    showMonthAfterYear: true,   
+    yearSuffix: "年" };   
+    datepicker2.setDefaults( datepicker.regional[ "zh-TW" ] );   
+    return datepicker2.regional[ "zh-TW" ];   
+    } ) );
+    
+    });    
+        
+    </script>
+    <!--end date range-->
 </head>
+<style>
+    * {
+    font-family: sans-serif; /* Change your font family */
+    }
+    .content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(8, 7, 7, 0.15);
+  }
+  
+  .content-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .content-table th,
+  .content-table td {
+    padding: 12px 15px;
+  }
+  
+  .content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+  
+  .content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+  }
+  .ph-button {
+	
+    border-style: solid;
+    border-width: 0px 0px 3px;
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+    color: #FFFFFF;	   
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    font-style: normal;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: all 200ms ease-in-out 0s;
+    white-space: nowrap;	
+    font-family: "Gotham Rounded A","Gotham Rounded B",Helvetica,Arial,sans-serif;
+    font-weight: 700;	
+    padding: 8px 39px 3px;
+    font-size: 16px;
+	
+  }
+  .ph-btn-green {
+
+    border-color: #3AC162;
+    background-color: #009879;
+
+    }
+    .ph-btn-green:hover, .ph-btn-green:focus, .ph-btn-green:active {
+    background-color: #4BC970;
+    border-color: #3AC162;    
+   }
+</style>
 <body class="overlay-scrollbar">
 
     <!-- Navbar -->
@@ -292,7 +457,7 @@
     <div class="sidebar">
         <ul class="sidebar-nav">
             <li class="sidebar-nav-item">
-                <a href="mainpage.html" class="sidebar-nav-link active">
+                <a href="./mainpage.html" class="sidebar-nav-link active">
                     <div>
                         <i class="fas fa-tachometer-alt"></i>
                     </div>
@@ -312,7 +477,7 @@
                 </a>
             </li>
             <li class="sidebar-nav-item">
-                <a href="./traceability_ index.html" class="sidebar-nav-link" >
+                <a href="traceability_ index.html" class="sidebar-nav-link" >
                     <div>
                         <i class="fas fa-calendar-alt"></i>
                     </div>
@@ -327,180 +492,77 @@
     <!-- End sidebar -->
     <!-- Main content -->
     <div class="wrapper">
-        <div class="row">
-            <div class="col-3 col-m-6 col-sm-6">
-                <div class="counter bg-tem">
-                    <p>
-                        <i class="fas fa-temperature-high"></i>
-                        溫度
-                    </p>
-                    <h2>18℃</h2>
-                    <h6>2021/01/01 13:00</h6>
-                </div>
-            </div>
-            <div class="col-3 col-m-6 col-sm-6">
-                <div class="counter bg-hum">
-                    <p>
-                        <i class="fas fa-tint"></i>
-                        濕度
-                    </p>
-                    <h2>1024</h2>
-                    <h6>2021/01/01 11:00</h6>
-                </div>
-            </div>
-            <div class="col-3 col-m-6 col-sm-6">
-                <div class="counter bg-light">
-                    <p>
-                        <i class="fas fa-cloud-sun"></i>
-                        光照
-                    </p>
-                    <h2>900</h2>
-                    <h6>2021/01/01 11:00</h6>
-                </div>
-            </div>
-            <div class="col-3 col-m-6 col-sm-6">
-                <div class="counter bg-soil">
-                    <p>
-                        <i class="fas fa-seedling"></i>
-                        土壤濕度
-                    </p>
-                    <h2>1024</h2>
-                    <h6>2021/01/01 12:00</h6>
-                </div>
-        
+        <div class="daterange">
+            <p class="datag"> 
+                工作日期   <input type="text" id="datepicker1" value="" name='datepicker'> 
+                至 <input type="text" id="datepicker2" value="" name='datepicker'>   
+            </p>        
         </div>
-            <div class="col-12 col-m-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>
-                            sensor1|sensor2|氣象站 溫度比較
-                        </h3>
-                    </div>
-                    <div class="card-content">
-                        <canvas id="lineChart"></canvas>
-                    </div>
-                </div>
+        <div class="col">
+            <div class="option">
+                <p>作物名稱
+                    <select>
+                        <option>請選擇</option>
+                        <option>日本小松</option>
+                        <option>小白菜</option>    
+                    </select>
+                </p>
             </div>
-            <div class="col-8 col-m-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>
-                            今日做的事
-                        </h3>
-                        <i class="fas fa-ellipsis-h"></i>
-                    </div>
-                    <div class="card-content">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>作物</th>
-                                    <th>區域</th>
-                                    <th>事項</th>
-                                    <th>時間</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>番茄</td>
-                                    <td>A10</td>
-                                    <td>
-                                        <span class="dot">
-                                            <i class="bg-planting"></i>
-                                            定植
-                                        </span>
-                                    </td>
-                                    <td>2021/01/01 08:00</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>奶白</td>
-                                    <td>B10</td>
-                                    <td>
-                                        <span class="dot">
-                                            <i class="bg-harvest"></i>
-                                            收成
-                                        </span>
-                                    </td>
-                                    <td>2021/01/01 14:00</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>青江菜</td>
-                                    <td>C03</td>
-                                    <td>
-                                        <span class="dot">
-                                            <i class="bg-planting"></i>
-                                            定植
-                                        </span>
-                                    </td>
-                                    <td>2021/01/01 15:00</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+            <div class="option">
+                <p>田區代號
+                    <select>
+                        <option>請選擇</option>
+                        <option>A10</option>
+                    </select>
+                </p>
             </div>
-            <div class="col-4 col-m-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>
-                            每日濕度
-                        </h3>
-                    </div>
-                    <div class="card-content">
-                        <canvas id="barChart"></canvas>
-                    </div>
-                </div>
+            <div class="option">
+                <input type="submit" name="" value="搜尋">
             </div>
-        
+        </div>
 
-        
-            <div class="col-6 col-m-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>
-                            sensor1 溫度、濕度比較
-                        </h3>
+        <table class="content-table">
+            <thead>
+            <tr>
+                <th>項次</th>
+                <th>報表名稱</th>
+                <th></th>
+                
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>人員記錄-A4</td>
+                <td>
+                    <div class="ph-float">
+                        <a href='#' class='ph-button ph-btn-green'>PDF</a>
                     </div>
-                    <div class="card-content">
-                        <canvas id="lineChart2"></canvas>
+                </td>
+                
+            </tr>
+            <tr class="active-row">
+                <td>2</td>
+                <td>農機具作業紀錄-A4</td>
+                <td>
+                    <div class="ph-float">
+                        <a href='#' class='ph-button ph-btn-green'>PDF</a>
+                    </div> 
+                </td>
+                
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>資材使用紀錄-A4</td>
+                <td>
+                    <div class="ph-float">
+                        <a href='#' class='ph-button ph-btn-green'>PDF</a>
                     </div>
-                </div>
-            </div>
-            <div class="col-6 col-m-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>
-                            sensor2 溫度、濕度比較
-                        </h3>
-                    </div>
-                    <div class="card-content">
-                        <canvas id="lineChart3"></canvas>
-                    </div>
-                </div>
-            </div>
-        
-
-        
-            <div class="col-12 col-m-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>
-                            sensor1|sensor2 濕度比較
-                        </h3>
-                    </div>
-                    <div class="card-content">
-                        <canvas id="lineChart4"></canvas>
-                    </div>
-                </div>
-            </div>
-       
-        
-
-        
-
+                </td>
+                
+            </tr>
+            </tbody>
+        </table>
     </div>
     <!-- End main content -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
