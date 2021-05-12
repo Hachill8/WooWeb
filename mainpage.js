@@ -369,3 +369,103 @@ var barChart = new Chart(ctx2, {
         }
 	}
 })
+function processFormData() {
+	const form = document.forms['form1'];    // 取得 name 屬性為 form 的表單
+	const sensor = form.elements.feature.value;  // 取得 elements 集合中 name 屬性為 name 的值
+	const date1 = form.elements.date1.value;// 取得 elements 集合中 name 屬性為 email 的值
+	const date2 = form.elements.date2.value;
+	var d1 = document.getElementById("#Date1").value;
+	//$('.datepicker').on('change', function() { $('p').text($('#Date1').val()) })
+	console.log($('.datepicker').on('change', function() { $('#Date1').val() })+"88");
+}
+var date = new Date(),date2 = new Date();
+var ddd="we are";
+function bootBoxContent() {
+	var content = $(".form-content").clone();
+	
+	$(content).show();
+	content.find(".datepicker1").datepicker({
+		format: 'yyyy/mm/dd',
+		autoclose: true,
+		clearBtn: true,
+		todayBtn: true,
+		disableTouchKeyboard: true,
+		multidate: false,
+		todayHighlight: true,
+		weekStart: 1,
+		keyboardNavigation: false,
+		endDate: new Date(),
+	}).on('changeDate', function (selected) {
+        var minDate = new Date(selected.date.valueOf());
+        $('.datepicker2').datepicker('setStartDate', minDate);
+		$('.datepicker2').datepicker('setEndDate', new Date());
+		//$('#Date2').datepicker('setDate', minDate);
+		date = $(this).val();
+    });
+	content.find(".datepicker2").datepicker({
+	  format: 'yyyy/mm/dd',
+	  autoclose: true,
+	  clearBtn: true,
+	  todayBtn: true,
+	  disableTouchKeyboard: true,
+	  multidate: false,
+	  todayHighlight: true,
+	  weekStart: 1,
+	  keyboardNavigation: false,
+	  endDate: new Date(),
+  }).on('changeDate', function (selected) {
+		//var maxDate = new Date(selected.date.valueOf());
+		//$('#Date2').datepicker('setDate', maxDate);
+		date2 = $(this).val();
+	});
+	return content;
+}
+$(document).ready(function() {
+	$("#history").on("click", function(event) {	
+	  	var modal = bootbox.dialog({
+		  	message: bootBoxContent(),
+		  	title: "歷史紀錄搜尋",
+		  	buttons: [
+			{
+			  	label: "取消",
+			  	className: "btn btn-default pull-left",
+			  	callback: function() {
+					console.log("just do something on close");
+			  	}
+			},
+			{
+			  	label: "搜尋",
+			  	className: "btn btn-primary pull-left",
+			  	callback: function(result) { 
+					var storyId = $(".searcha").attr('href');
+					console.log(date.toString());
+					console.log(storyId);
+					if (result) {
+						window.location.href = storyId+"?sensor="+"&"+date+"&"+date2;
+				 	}
+			  	}
+			}
+		  	],
+		  	show: false,
+		  	onEscape: function() 
+		  	{ modal.modal("hide"); }
+	  	});
+	  	modal.modal("show");
+	});
+	
+	
+})
+function doAction(dd)
+{
+    var val=$('#Date1').datepicker('getDate'); 
+	date.toLocaleDateString();
+	$('.datepicker').datepicker().change( function() { $('#Date1').val(); });
+    console.log(date+"89");
+}
+function doAction2(dd)
+{
+    var val=$('#Date1').datepicker('getDate'); 
+	ddd=dd.toUTCString();
+	$('.datepicker').datepicker().change( function() { $('#Date1').val(); });
+    console.log(dd+"88");
+}
