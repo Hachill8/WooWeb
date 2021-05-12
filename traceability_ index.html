@@ -12,11 +12,17 @@
 	<!-- End import lib -->
 
     <!--date range-->
-	<link rel="stylesheet" type="text/css" href="style.css">
+	  <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>    
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>    
     
+    
+    <!-- DataTable-->
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/dataTables.bootstrap4.min.css">
+
+
     <script>
     $(function() {
     $("#datepicker1").datepicker({   
@@ -456,7 +462,7 @@
     <div class="sidebar">
         <ul class="sidebar-nav">
             <li class="sidebar-nav-item">
-                <a href="./mainpage.html" class="sidebar-nav-link active">
+                <a href="./mainpage.html" class="sidebar-nav-link">
                     <div>
                         <i class="fas fa-tachometer-alt"></i>
                     </div>
@@ -476,7 +482,7 @@
                 </a>
             </li>
             <li class="sidebar-nav-item">
-                <a href="traceability_ index.html" class="sidebar-nav-link" >
+                <a href="traceability_ index.html" class="sidebar-nav-link active" >
                     <div>
                         <i class="fas fa-calendar-alt"></i>
                     </div>
@@ -491,78 +497,939 @@
     <!-- End sidebar -->
     <!-- Main content -->
     <div class="wrapper">
-        <div class="daterange">
-            <p class="datag"> 
-                工作日期   <input type="text" id="datepicker1" value="" name='datepicker'> 
-                至 <input type="text" id="datepicker2" value="" name='datepicker'>   
-            </p>        
+    <div class="container-fluid" style="margin-top: 57px;">
+        <div class="container bg-white p-3">
+          <h4 class="mb-4">田間作業紀錄</h4>
+          <div class="mb-4">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#addPatientModal"><i class="fas fa-plus"></i> 新增</button>
+            <button class="btn btn-sm btn-secondary float-right"><a href="./patients.php" class="remove-link-style text-white"><i class="fab fa-rev"></i> &nbsp;重新載入</a></button>
+          </div>
+          <div id="patientsTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+              <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                      <div class="dataTables_length" id="patientsTable_length">
+                          <label>顯示 <select name="patientsTable_length" aria-controls="patientsTable" class="custom-select custom-select-sm form-control form-control-sm">
+                          <option value="10">10</option>
+                          <option value="25">25</option>
+                          <option value="50">50</option>
+                          <option value="100">100</option></select> 筆</label>
+                      </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                      <div id="patientsTable_filter" class="dataTables_filter">
+                          <label>查詢:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="patientsTable"></label>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-sm-12">
+                      <div class="dataTables_scroll">
+                          <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;">
+                              <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1960px; padding-right: 17px;">
+                                  <table class="table table-bordered table-hover dataTable no-footer" style="width: 1960px; margin-left: 0px;" role="grid">
+                                      <thead>
+                                          <tr role="row">
+                                              <th class="sorting" tabindex="0" aria-controls="patientsTable" rowspan="1" colspan="1" style="width: 118px;" aria-label="Action: activate to sort column ascending"></th>
+                                              <th class="sorting_desc" tabindex="0" aria-controls="patientsTable" rowspan="1" colspan="1" style="width: 78px;" aria-sort="descending" aria-label="Patients ID: activate to sort column ascending">田區編號</th>
+                                              <th class="sorting" tabindex="0" aria-controls="patientsTable" rowspan="1" colspan="1" style="width: 140px;" aria-label="First name: activate to sort column ascending">實際作業日期</th>
+                                              <th class="sorting" tabindex="0" aria-controls="patientsTable" rowspan="1" colspan="1" style="width: 93px;" aria-label="Middle name: activate to sort column ascending">工作項目</th>
+                                              <th class="sorting" tabindex="0" aria-controls="patientsTable" rowspan="1" colspan="1" style="width: 81px;" aria-label="Last name: activate to sort column ascending">工作人員</th>
+                                              <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 523px;" aria-label="Address">內容</th>
+                                          </tr>
+                                      </thead>
+                                  </table>
+                              </div>
+                          </div>
+                          <div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%; height: 40vh;">
+                              <table id="patientsTable" class="table table-bordered table-hover dataTable no-footer" style="width: 100%;" role="grid" aria-describedby="patientsTable_info">
+                                  <thead>
+                                      <tr role="row" style="height: 0px;">
+                                          <th class="sorting" aria-controls="patientsTable" rowspan="1" colspan="1" style="width: 118px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="Action: activate to sort column ascending">
+                                              <div class="dataTables_sizing" style="height: 0px; overflow: hidden;"></div>
+                                          </th>
+                                          <th class="sorting_desc" aria-controls="patientsTable" rowspan="1" colspan="1" style="width: 78px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-sort="descending" aria-label="Patients ID: activate to sort column ascending">
+                                              <div class="dataTables_sizing" style="height: 0px; overflow: hidden;">田區編號</div>
+                                          </th>
+                                          <th class="sorting" aria-controls="patientsTable" rowspan="1" colspan="1" style="width: 93px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="Middle name: activate to sort column ascending">
+                                              <div class="dataTables_sizing" style="height: 0px; overflow: hidden;">實際作業日期</div>
+                                          </th>
+                                          <th class="sorting" aria-controls="patientsTable" rowspan="1" colspan="1" style="width: 140px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="First name: activate to sort column ascending">
+                                              <div class="dataTables_sizing" style="height: 0px; overflow: hidden;">工作項目</div>
+                                          </th>
+                                          <th class="sorting" aria-controls="patientsTable" rowspan="1" colspan="1" style="width: 93px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="Middle name: activate to sort column ascending">
+                                              <div class="dataTables_sizing" style="height: 0px; overflow: hidden;">作業人員</div>
+                                          </th>
+                                          <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 523px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="Address">
+                                              <div class="dataTables_sizing" style="height: 0px; overflow: hidden;">內容</div>
+                                          </th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr role="row" class="odd">
+                                        <td>
+                                            <button class="btn btn-secondary btn-sm mr-1" data-toggle="modal" id="viewPatientBtn">
+                                            <i class="fas fa-eye"></i>&nbsp;檢視</button>
+                                            <button class="btn btn-primary btn-sm" data-toggle="modal" id="editPatientBtn">
+                                            <i class="fas fa-edit"></i>&nbsp;編輯</button>
+                                        </td>
+                                        <td class="sorting_1">C區</td>
+                                        <td>2010/04/12</td>
+                                        <td>定植(移植)</td>
+                                        <td>系統管理者</td>
+                                        <td></td>
+                                        
+                                    </tr>  
+                                  </tbody>
+                              </table>
+                         
+                            </div>
+                        </div>
+
+  <div id="patientsTable_processing" class="dataTables_processing card" style="display: none;">Processing...</div></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="patientsTable_info" role="status" aria-live="polite">Showing 1 to 10 of 31 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="patientsTable_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="patientsTable_previous"><a href="#" aria-controls="patientsTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="patientsTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="patientsTable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="patientsTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="patientsTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item next" id="patientsTable_next"><a href="#" aria-controls="patientsTable" data-dt-idx="5" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
+              <!-- Pagination -->
+              <div id="page" class="m-auto">
+                <ul id="pagination" class="pagination"></ul>
+              </div>
+
+              <!-- Create Patient Modal -->
+              <div class="modal fade" id="addPatientModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
+                <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="myModalLabel">新增工作紀錄</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+                    </div><!-- /.modal-header -->
+                    
+                    <div class="modal-body p-3">
+
+                      <form data-toggle="validator" action="#" method="POST" id="addPatient" enctype="multipart/form-data">
+
+                      <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                          <a class="nav-item nav-link active" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-controls="nav-info" aria-selected="true">作物工作紀錄</a>
+                          <a class="nav-item nav-link" id="nav-treatment-tab" data-toggle="tab" href="#nav-treatment" role="tab" aria-controls="nav-treatment" aria-selected="true">作物資料 </a>
+                        </div>
+                      </nav>
+                      <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
+                          <!-- Patient information Section -->
+                          <div class="border mt-3">
+                            <div class="cbg-dark p-2 text-white pointer" id="patientInformationHeader">&nbsp;作物工作紀錄</div>
+                              <div class="p-2 mt-3" id="patientInformationContent">
+
+                                  <div class="row">
+                                    
+                                    <div class="col-md-4">
+                                      <div class="form-group">
+                                        <label for="middlename">田區編號</label>
+                                        <select class="form-control pointer" id="region" name="region">
+                                        
+                                          <option value="1">C</option><option value="2">北</option>
+                                        </select>
+                                        <span class="errorInput" id="errormiddlename"></span>
+                                      </div>
+                                    </div><!-- /.col -->
+                                                                   
+                                  </div><!-- /.row -->
+
+                                  <div class="row">
+                                    <div class="col-md-4">
+                                      <div class="form-group"> 
+                                        <label for="birthdate">工作日期</label>
+                                        <div class="input-group">
+                                          <input type="text" class="form-control" placeholder="mm-dd-yyyy" id="birthdate" name="birthdate" readonly="readonly">
+                                          <div class="input-group-append">
+                                              <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                          </div><!-- /.input-group-append -->
+                                        </div><!-- /.input-group -->
+                                        <span id="errorbirthdate" class="errorInput"></span>
+                                      </div>
+                                    </div><!-- /.col -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                          <label for="age">工作項目</label>
+                                          <select class="form-control pointer" id="baranggay" name="baranggay">
+                                            <option value="">播種</option>
+                                            <option value="">定植</option>
+                                            <option value="">施肥</option>
+                                            <option value="">雜草防除</option>
+                                            <option value="">整地</option>
+                                            <option value="">其他</option>
+                                            
+                                          </select>
+                                        </div>
+                                    </div><!-- /.col -->
+                                  </div>
+                                  
+                                  <div class="row">
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                          <label for="cellphonenumber">工作內容</label>
+                                          <input type="text" class="form-control" id="cellphonenumber" name="cellphonenumber">
+                                          <span id="errorcellphonenumber" class="errorInput"></span>
+                                        </div>
+                                    </div><!-- /.col -->
+                                    
+                                  </div><!-- /.row -->
+                              </div>
+                          </div><!-- /.border-->
+
+                          <!-- Patient Incident History -->
+                       
+                          
+                          <div class="d-flex justify-content-center mt-4">
+                            <button type="button" class="btn btn-sm btn-secondary" id="treatmentNext">作物資料 <i class="fas fa-arrow-right"></i></button>
+                          </div>  
+
+                        </div><!-- /#nav-info -->
+
+                        <div class="tab-pane fade" id="nav-treatment" role="tabpanel" aria-labelledby="nav-profile-tab">
+                           
+                           <!-- Post and Pre Exposure -->
+                           <!-- Exposure -->
+<div class="border mt-3">
+  <div class="cbg-dark p-2 text-white pointer">&nbsp;Exposure</div>
+  <div class="p-2 mt-3">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label>Select exposure type</label>
+          <select class="form-control pointer" id="exposureType" name="exposuretype">
+            <option value="postExposure">Post exposure</option>
+            <option value="preExposure">Pre exposure</option>
+          </select>
         </div>
-        <div class="col">
-            <div class="option">
-                <p>作物名稱
-                    <select>
-                        <option>請選擇</option>
-                        <option>日本小松</option>
-                        <option>小白菜</option>    
-                    </select>
-                </p>
+      </div><!-- /.col -->
+      <div class="col-sm-8">
+        
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+
+    <!-- Post Exposure Section -->
+    <div class="mt-3" id="postExposure">
+      <div class="cbg-dark p-2 text-white text-center"><b>POST-EXPOSURE</b></div>
+      <div class="border p-2">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="postcategory">Category of Exposure</label>
+              <select class="form-control pointer" id="postcategory" name="postcategory">
+                <option selected="" value="">-- empty category --</option>
+                <option value="first">I</option>
+                <option value="second">II</option>
+                <option value="third">III</option>
+              </select>
             </div>
-            <div class="option">
-                <p>田區代號
-                    <select>
-                        <option>請選擇</option>
-                        <option>A10</option>
-                    </select>
-                </p>
+          </div><!-- /.col -->
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="postdate">Date of Exposure</label>
+              <div class="input-group">
+                <input type="text" class="form-control pointer" name="postdate" id="postdate" placeholder="mm-dd-yyyy" readonly="">
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                </div><!-- /.input-group-append -->
+              </div><!-- /.input-group -->
             </div>
-            <div class="option">
-                <input type="submit" name="" value="搜尋">
+          </div><!-- /.col -->
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="postplace">Place</label>
+              <input type="text" class="form-control" id="postplace" name="postplace">
             </div>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="posttype">Type</label>
+              <select class="form-control pointer" id="posttype" name="posttype">
+                <!-- <option selected value=''>-- selected empty type --</option>
+                <option value="1">Bite</option>
+                <option value="2">Scratches</option>
+                <option value="3">Claw</option> -->
+              </select>
+            </div>
+          </div><!-- /.col -->
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="postsource">Source</label>
+              <select class="form-control pointer" id="postsource" name="postsource">
+                <!-- <option selected value=''>-- selected empty source --</option>
+                <option value="first">Dog</option>
+                <option value="second">Cat</option>
+                <option value="third">Monkey</option> -->
+              </select>
+            </div>
+          </div><!-- /.col -->
+          <div class="col-md-4">
+            
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div>
+
+      <div class="cbg-dark p-2 text-white text-center"><b>POST-EXPOSURE VACCINATION RECORD</b></div>
+      <div class="p-2 border"></div>
+      <div id="postExposureContent">
+
+        <div class="row">
+          <div class="col-sm-12" id="postExposureWrapper">
+
+            <!-- Post Exposure Section -->
+            <div style="overflow-x: auto;" id="postexposureWrapperTableOverflow">
+              <div id="postExposureWrapperTable" style="width: 748px;">
+                <!-- Post exposure table -->
+                <table class="table table-bordered table-sm" style="width: 100%;" id="postExposureTable">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Duration</th>
+                      <th>Date</th>
+                      <th style="width: 137px;">Administration Site</th>
+                      <th>Treatment</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <b>Day 0</b>
+                      </td>
+                      <td>
+                        <input type="text" name="postDate0" class="form-control pointer" placeholder="mm-dd-yyyy" style="width: 126px; border: 1px solid rgb(206, 212, 218);" readonly="" id="postDate0">
+                        <p id="errorpostDate0" class="errorInput text-center"></p>
+                      </td>
+                      <td>
+                        <select class="form-control pointer" id="postregimenTypeDay0" name="postregimenTypeDay0" style="width: 148px;">
+                          <option value="intramuscular">Intramuscular</option>
+                          <option value="intradermal">Intradermal</option>
+                        </select>
+                      </td>
+                      <td>
+                        <div class="row">
+                          <div class="col-sm-12 d-flex">
+                            <select class="form-control pointer" id="postprescriptionDay0" name="postprescriptionDay0">
+                              <!-- <option value="0" >Medicine 1</option>
+                              <option value="1">Medicine 2</option>
+                              <option value="2">Medicine 3</option> -->
+                            </select>
+                            <button class="btn btn-sm btn-success ml-3" type="button" id="postaddMedicineBtnDay0">  <i class="fas fa-plus"></i>  Add </button>
+                          </div><!-- /.col --> 
+                          <div class="d-flex justify-content-center" style="width: 240.766px; margin-left: 15px;">
+                            <span class="errorInput" id="errorpostprescriptionDay0"></span>
+                          </div>
+                        </div><!-- /.row -->
+
+                        <!-- Treatment table -->
+                        <div class="tableFixHead border mt-2">
+                          <table class="table table-hover table-bordered table-sm" style="width: 100%; font-size: 14px;" id="postmedicinesTableDay0">
+                            <thead class="thead-light">
+                              <tr>
+                                <th class="d-none">id</th>
+                                <th>Medicines</th>
+                                <th class="text-center">Quantity</th>
+                                <th class="text-center">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody id="postmedicinestbodyDay0">
+                            <!-- <tr id="errorpostmedicinesTableDay0">
+                              <td colspan="3" class="text-center" style="color: red;"><i class="fas fa-exclamation-triangle"></i> Enter Medicine</td>
+                            </tr> -->
+                          <!--<tr>
+                                <td class="d-none">${ prescriptionValue }</td>
+                                <td>${ medicines[prescriptionValue] }</td>
+                                <td>1</td>
+                                <td><button class="btn btn-sm btn-danger">Remove</button></td>
+                              </tr> -->
+                            </tbody>
+                          </table>
+                        </div><!-- tableFixHead -->
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <b>Day 3</b>
+                      </td>
+                      <td>
+                        <input type="text" name="postDate3" id="postDate3" class="form-control pointer" placeholder="mm-dd-yyyy" readonly="" style="border: 1px solid rgb(206, 212, 218);">
+                        <p id="errorpostDate3" class="errorInput text-center"></p>
+                      </td>
+                      <td>
+                        <select class="form-control pointer" id="postregimenTypeDay3" name="postregimenTypeDay3" style="width: 148px;">
+                          <option value="intramuscular">Intramuscular</option>
+                          <option value="intradermal">Intradermal</option>
+                        </select>
+                      </td>
+                      <td>
+                        <div class="row">
+                          <div class="col-sm-12 d-flex">
+                            <select class="form-control pointer" id="postprescriptionDay3" name="postprescriptionDay3">
+                              <!-- <option value="preExposure">Medicine 1</option>
+                              <option value="postExposure">Medicine 2</option>
+                              <option value="postExposure">Medicine 3</option> -->
+                            </select>
+                            <button class="btn btn-sm btn-primary ml-3" type="button" id="postaddMedicineBtnDay3">  <i class="fas fa-plus"></i>  Add</button>
+                          </div><!-- /.col --> 
+                          <div class="d-flex justify-content-center" style="width: 240.766px; margin-left: 15px;">
+                            <span class="errorInput" id="errorpostprescriptionDay3"></span>
+                          </div>
+                        </div><!-- /.row -->
+
+                        <!-- Treatment table -->
+                        <div class="tableFixHead border mt-2">
+                          <table class="table table-hover table-bordered table-sm" style="width: 100%; font-size: 14px; " id="postmedicinesTableDay3">
+                            <thead class="thead-light">
+                              <tr>
+                                <th class="d-none">id</th>
+                                <th>Medicines</th>
+                                <th class="text-center">Quantity</th>
+                                <th class="text-center">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody id="postmedicinestbodyDay3">
+                          <!--<tr>
+                                <td class="d-none">${ prescriptionValue }</td>
+                                <td>${ medicines[prescriptionValue] }</td>
+                                <td>1</td>
+                                <td><button class="btn btn-sm btn-danger">Remove</button></td>
+                              </tr> -->
+                            </tbody>
+                          </table>
+                        </div><!-- tableFixHead -->
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <b>Day 7</b>
+                      </td>
+                      <td>
+                        <input type="text" name="postDate7" id="postDate7" class="form-control pointer" placeholder="mm-dd-yyyy" readonly="" style="border: 1px solid rgb(206, 212, 218);">
+                        <p id="errorpostDate7" class="errorInput text-center"></p>
+                      </td>
+                      <td>
+                        <select class="form-control pointer" id="postregimenTypeDay7" name="postregimenTypeDay7" style="width: 148px;">
+                          <option value="intramuscular">Intramuscular</option>
+                          <option value="intradermal">Intradermal</option>
+                        </select>
+                      </td>
+                      <td>
+                        <div class="row">
+                          <div class="col-sm-12 d-flex">
+                            <select class="form-control pointer" id="postprescriptionDay7" name="postprescriptionDay7">
+                              <!-- <option value="preExposure" >Medicine 1</option>
+                              <option value="postExposure">Medicine 2</option>
+                              <option value="postExposure">Medicine 3</option> -->
+                            </select>
+                            <button id="postaddMedicineBtnDay7" class="btn btn-sm btn-primary ml-3" type="button">  <i class="fas fa-plus"></i>  Add</button>
+                          </div><!-- /.col --> 
+                          <div class="d-flex justify-content-center" style="width: 240.766px; margin-left: 15px;">
+                            <span class="errorInput" id="errorpostprescriptionDay7"></span>
+                          </div>
+                        </div><!-- /.row -->
+
+                        <!-- Treatment table -->
+                        <div class="tableFixHead border mt-2">
+                          <table class="table table-hover table-bordered table-sm" style="width: 100%; font-size: 14px; " id="postmedicinesTableDay7">
+                            <thead class="thead-light">
+                              <tr>
+                                <th class="d-none">id</th>
+                                <th>Medicines</th>
+                                <th class="text-center">Quantity</th>
+                                <th class="text-center">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody id="postmedicinestbodyDay7">
+                          <!--<tr>
+                                <td class="d-none">${ prescriptionValue }</td>
+                                <td>${ medicines[prescriptionValue] }</td>
+                                <td>1</td>
+                                <td><button class="btn btn-sm btn-danger">Remove</button></td>
+                              </tr> -->
+                            </tbody>
+                          </table>
+                        </div><!-- tableFixHead -->
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <b>Day 14 <br><small>(Observation Period)</small></b>
+                      </td>
+                      <td>
+                        <input type="text" id="postDate14" name="postDate14" class="form-control pointer" placeholder="mm-dd-yyyy" readonly="" style="border: 1px solid rgb(206, 212, 218);">
+                      </td>
+                      <td>
+                        <select class="form-control not-allowed" id="postregimenTypeDay14" name="postregimenTypeDay14" style="width: 148px;" disabled="">
+                          <option value="intramuscular">Intramuscular</option>
+                          <option value="intradermal">Intradermal</option>
+                        </select>
+                      </td>
+                      <td>
+                        <div class="row">
+                          <div class="col-sm-12 d-flex">
+                            <select class="form-control not-allowed" id="postprescriptionDay14" name="postprescriptionDay14" disabled="">
+                              <!-- <option value="preExposure" >Medicine 1</option>
+                              <option value="postExposure">Medicine 2</option>
+                              <option value="postExposure">Medicine 3</option> -->
+                            </select>
+                            <button id="postaddMedicineBtnDay14" class="btn btn-sm btn-primary ml-3 not-allowed" type="button" disabled="">  <i class="fas fa-plus"></i>  Add</button>
+                          </div><!-- /.col --> 
+                          <div class="d-flex justify-content-center" style="width: 240.766px; margin-left: 15px;">
+                            <span class="errorInput" id="errorpostprescriptionDay14"></span>
+                          </div>
+                        </div><!-- /.row -->
+
+                        <!-- Treatment table -->
+                        <div class="tableFixHead border mt-2">
+                          <table class="table table-hover table-bordered table-sm" style="width: 100%; font-size: 14px; " id="postmedicinesTableDay14">
+                            <thead class="thead-light">
+                              <tr>
+                                <th class="d-none">id</th>
+                                <th>Medicines</th>
+                                <th class="text-center">Quantity</th>
+                                <th class="text-center">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody id="postmedicinestbodyDay14">
+                          <!--<tr>
+                                <td class="d-none">${ prescriptionValue }</td>
+                                <td>${ medicines[prescriptionValue] }</td>
+                                <td>1</td>
+                                <td><button class="btn btn-sm btn-danger">Remove</button></td>
+                              </tr> -->
+                            </tbody>
+                          </table>
+                        </div><!-- tableFixHead -->
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <b>Day 28-30</b>
+                      </td>
+                      <td>
+                        <input type="text" name="postDate28_30" id="postDate28_30" class="form-control not-allowed" placeholder="mm-dd-yyyy" readonly="" disabled="" style="border: 1px solid rgb(206, 212, 218);">
+                      </td>
+                      <td>
+                        <select class="form-control not-allowed" id="postregimenTypeDay28_30" name="postregimenTypeDay28_30" style="width: 148px;" disabled="">
+                          <option value="intramuscular">Intramuscular</option>
+                          <option value="intradermal">Intradermal</option>
+                        </select>
+                      </td>
+                      <td>
+                        <div class="row">
+                          <div class="col-sm-12 d-flex">
+                            <select class="form-control not-allowed" id="postprescriptionDay28_30" name="postprescriptionDay28_30" disabled="">
+                              <!-- <option value="preExposure" >Medicine 1</option>
+                              <option value="postExposure">Medicine 2</option>
+                              <option value="postExposure">Medicine 3</option> -->
+                            </select>
+                            <button id="postaddMedicineBtnDay28_30" class="btn btn-sm btn-primary ml-3 not-allowed" type="button" disabled="">  <i class="fas fa-plus"></i>  Add</button>
+                          </div><!-- /.col --> 
+                          <div class="d-flex justify-content-center" style="width: 240.766px; margin-left: 15px;">
+                            <span class="errorInput" id="errorpostprescriptionDay28_30"></span>
+                          </div>
+                        </div><!-- /.row -->
+
+                        <!-- Treatment table -->
+                        <div class="tableFixHead border mt-2">
+                          <table id="postmedicinesTableDay28_30" class="table table-hover table-bordered table-sm" style="width: 100%; font-size: 14px;">
+                            <thead class="thead-light">
+                              <tr>
+                                <th class="d-none">id</th>
+                                <th>Medicines</th>
+                                <th class="text-center">Quantity</th>
+                                <th class="text-center">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody id="postmedicinestbodyDay28_30">
+                          <!--<tr>
+                                <td class="d-none">${ prescriptionValue }</td>
+                                <td>${ medicines[prescriptionValue] }</td>
+                                <td>1</td>
+                                <td><button class="btn btn-sm btn-danger">Remove</button></td>
+                              </tr> -->
+                            </tbody>
+                          </table>
+                        </div><!-- tableFixHead -->
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div><!-- /#postExposureWrapperTable -->
+            </div><!-- /#postexposureWrapperTableOverflow -->
+          </div>
         </div>
 
-        <table class="content-table">
-            <thead>
-            <tr>
-                <th>項次</th>
-                <th>報表名稱</th>
-                <th></th>
-                
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>人員記錄-A4</td>
-                <td>
-                    <div class="ph-float">
-                        <a href='#' class='ph-button ph-btn-green'>PDF</a>
-                    </div>
-                </td>               
-            </tr>
-            <tr class="active-row">
-                <td>2</td>
-                <td>農機具作業紀錄-A4</td>
-                <td>
-                    <div class="ph-float">
-                        <a href='#' class='ph-button ph-btn-green'>PDF</a>
-                    </div> 
-                </td>                
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>資材使用紀錄-A4</td>
-                <td>
-                    <div class="ph-float">
-                        <a href='#' class='ph-button ph-btn-green'>PDF</a>
-                    </div>
-                </td>               
-            </tr>
-            </tbody>
-        </table>
+        <div class="form-group mt-2 p-2">
+          <label for="remarksPostExposure">Remarks:</label>
+          <input type="text" class="form-control" name="remarksPostExposure" id="remarksPostExposure">
+        </div>
+
+      </div>
     </div>
+    <!-- /Post Exposure Section -->
+
+    <!-- Pre Exposure Section -->
+    <div class="mt-3" id="preExposure" style="display: none;">
+      <div class="cbg-dark p-2 text-white text-center"><b>PRE-EXPOSURE VACCINATION RECORD</b></div>
+      <div class="border p-2"></div>
+        <div id="preExposureContent">
+
+          <div class="row">
+            <div class="col-sm-12" id="preExposureWrapper">
+
+              <!-- Pre Exposure Section -->
+              <div style="overflow-x: auto;" id="preexposureWrapperTableOverflow">
+                <div id="preexposureWrapperTable" style="width: 748px;">
+                  <!-- Pre exposure table -->
+                  <table class="table table-bordered table-sm" style="width: 100%;" id="preExposureTable">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th>Duration</th>
+                        <th>Date</th>
+                        <th style="width: 137px;">Administration Site</th>
+                        <th>Treatment</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <b>Day 0</b>
+                        </td>
+                        <td>
+                          <input type="text" name="preDate0" class="form-control pointer" placeholder="mm-dd-yyyy" readonly="" id="preDate0" style="border: 1px solid rgb(206, 212, 218);">
+                          <p id="errorpreDate0" class="errorInput text-center"></p>
+                        </td>
+                        <td>
+                          <select class="form-control pointer" id="preregimenTypeDay0" name="preregimenTypeDay0" style="width: 148px;">
+                            <option value="intramuscular">Intramuscular</option>
+                            <option value="intradermal">Intradermal</option>
+                          </select>
+                        </td>
+                        <td>
+                          <div class="row">
+                            <div class="col-sm-12 d-flex">
+                              <select class="form-control pointer" id="preprescriptionDay0" name="exposure">
+                                <!-- <option value="0" >Medicine 1</option>
+                                <option value="1">Medicine 2</option>
+                                <option value="2">Medicine 3</option> -->
+                              </select>
+                              <button class="btn btn-sm btn-success ml-3" type="button" id="preaddMedicineBtnDay0">  <i class="fas fa-plus"></i>  Add </button>
+                            </div><!-- /.col --> 
+                            <div class="d-flex justify-content-center" style="width: 240.766px; margin-left: 15px;">
+                              <span class="errorInput" id="errorpreprescriptionDay0"></span>
+                            </div>
+                          </div><!-- /.row -->
+
+                          <!-- Treatment table -->
+                          <div class="tableFixHead border mt-2">
+                            <table class="table table-hover table-bordered table-sm" style="width: 100%; font-size: 14px; " id="premedicinesTableDay0">
+                              <thead class="thead-light">
+                                <tr>
+                                  <th class="d-none">id</th>
+                                  <th>Medicines</th>
+                                  <th class="text-center">Quantity</th>
+                                  <th class="text-center">Action</th>
+                                </tr>
+                              </thead>
+                              <tbody id="premedicinestbodyDay0">
+                            <!--<tr>
+                                  <td class="d-none">${ prescriptionValue }</td>
+                                  <td>${ medicines[prescriptionValue] }</td>
+                                  <td>1</td>
+                                  <td><button class="btn btn-sm btn-danger">Remove</button></td>
+                                </tr> -->
+                              </tbody>
+                            </table>
+                          </div><!-- tableFixHead -->
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          <b>Day 7</b>
+                        </td>
+                        <td>
+                          <input type="text" name="preDate7" id="preDate7" class="form-control pointer" placeholder="mm-dd-yyyy" readonly="" style="border: 1px solid rgb(206, 212, 218);">
+                          <p id="errorpreDate7" class="errorInput text-center"></p>
+                        </td>
+                        <td>
+                          <select class="form-control pointer" id="preregimenTypeDay7" name="preregimenTypeDay7" style="width: 148px;">
+                            <option value="intramuscular">Intramuscular</option>
+                            <option value="intradermal">Intradermal</option>
+                          </select>
+                        </td>
+                        <td>
+                          <div class="row">
+                            <div class="col-sm-12 d-flex">
+                              <select class="form-control pointer" id="preprescriptionDay7" name="exposure">
+                                <!-- <option value="preExposure">Medicine 1</option>
+                                <option value="postExposure">Medicine 2</option>
+                                <option value="postExposure">Medicine 3</option> -->
+                              </select>
+                              <button class="btn btn-sm btn-primary ml-3" type="button" id="preaddMedicineBtnDay7">  <i class="fas fa-plus"></i>  Add</button>
+                            </div><!-- /.col --> 
+                            <div class="d-flex justify-content-center" style="width: 240.766px; margin-left: 15px;">
+                              <span class="errorInput" id="errorpreprescriptionDay7"></span>
+                            </div>
+                          </div><!-- /.row -->
+
+                          <!-- Treatment table -->
+                          <div class="tableFixHead border mt-2">
+                            <table class="table table-hover table-bordered table-sm" style="width: 100%; font-size: 14px; " id="premedicinesTableDay7">
+                              <thead class="thead-light">
+                                <tr>
+                                  <th class="d-none">id</th>
+                                  <th>Medicines</th>
+                                  <th class="text-center">Quantity</th>
+                                  <th class="text-center">Action</th>
+                                </tr>
+                              </thead>
+                              <tbody id="premedicinestbodyDay7">
+                            <!--<tr>
+                                  <td class="d-none">${ prescriptionValue }</td>
+                                  <td>${ medicines[prescriptionValue] }</td>
+                                  <td>1</td>
+                                  <td><button class="btn btn-sm btn-danger">Remove</button></td>
+                                </tr> -->
+                              </tbody>
+                            </table>
+                          </div><!-- tableFixHead -->
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          <b>Day 21-28</b>
+                        </td>
+                        <td>
+                          <input type="text" name="preDate21_28" id="preDate21_28" class="form-control pointer" placeholder="mm-dd-yyyy" readonly="" style="border: 1px solid rgb(206, 212, 218);">
+                          <p id="errorpreDate21_28" class="errorInput text-center"></p>
+                        </td>
+                        <td>
+                          <select class="form-control pointer" id="preregimenTypeDay21_28" name="preregimenTypeDay21_28" style="width: 148px;">
+                            <option value="intramuscular">Intramuscular</option>
+                            <option value="intradermal">Intradermal</option>
+                          </select>
+                        </td>
+                        <td>
+                          <div class="row">
+                            <div class="col-sm-12 d-flex">
+                              <select class="form-control pointer" id="preprescriptionDay21_28" name="preprescriptionDay21_28">
+                                <!-- <option value="preExposure" >Medicine 1</option>
+                                <option value="postExposure">Medicine 2</option>
+                                <option value="postExposure">Medicine 3</option> -->
+                              </select>
+                              <button id="preaddMedicineBtnDay21_28" class="btn btn-sm btn-primary ml-3" type="button">  <i class="fas fa-plus"></i>  Add</button>
+                            </div><!-- /.col --> 
+                            <div class="d-flex justify-content-center" style="width: 240.766px; margin-left: 15px;">
+                              <span class="errorInput" id="errorpreprescriptionDay21_28"></span>
+                            </div>
+                          </div><!-- /.row -->
+
+                          <!-- Treatment table -->
+                          <div class="tableFixHead border mt-2">
+                            <table id="premedicinesTableDay21_28" class="table table-hover table-bordered table-sm" style="width: 100%; font-size: 14px;">
+                              <thead class="thead-light">
+                                <tr>
+                                  <th class="d-none">id</th>
+                                  <th>Medicines</th>
+                                  <th class="text-center">Quantity</th>
+                                  <th class="text-center">Action</th>
+                                </tr>
+                              </thead>
+                              <tbody id="premedicinestbodyDay21_28">
+                            <!--<tr>
+                                  <td class="d-none">${ prescriptionValue }</td>
+                                  <td>${ medicines[prescriptionValue] }</td>
+                                  <td>1</td>
+                                  <td><button class="btn btn-sm btn-danger">Remove</button></td>
+                                </tr> -->
+                              </tbody>
+                            </table>
+                          </div><!-- tableFixHead -->
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          <b>1st Booster <br> <small>at 1 year</small></b>
+                        </td>
+                        <td>
+                          <input type="text" id="preDate1year" name="preDate1year" class="form-control pointer" placeholder="mm-dd-yyyy" readonly="" style="border: 1px solid rgb(206, 212, 218);">
+                        </td>
+                        <td>
+                          <select class="form-control not-allowed" id="preregimenType1year" name="preregimenType1year" style="width: 148px;" disabled="">
+                            <option value="intramuscular">Intramuscular</option>
+                            <option value="intradermal">Intradermal</option>
+                          </select>
+                        </td>
+                        <td>
+                          <div class="row">
+                            <div class="col-sm-12 d-flex">
+                              <select class="form-control not-allowed" id="preprescription1year" name="exposure" disabled="">
+                                <!-- <option value="preExposure" >Medicine 1</option>
+                                <option value="postExposure">Medicine 2</option>
+                                <option value="postExposure">Medicine 3</option> -->
+                              </select>
+                              <button id="preaddMedicineBtn1year" class="btn btn-sm btn-primary ml-3 not-allowed" type="button" disabled="">  <i class="fas fa-plus"></i>  Add</button>
+                            </div><!-- /.col --> 
+                            <div class="d-flex justify-content-center" style="width: 240.766px; margin-left: 15px;">
+                              <span class="errorInput" id="errorpreprescription1year"></span>
+                            </div>
+                          </div><!-- /.row -->
+
+                          <!-- Treatment table -->
+                          <div class="tableFixHead border mt-2">
+                            <table class="table table-hover table-bordered table-sm" style="width: 100%; font-size: 14px; " id="premedicinesTable1year">
+                              <thead class="thead-light">
+                                <tr>
+                                  <th class="d-none">id</th>
+                                  <th>Medicines</th>
+                                  <th class="text-center">Quantity</th>
+                                  <th class="text-center">Action</th>
+                                </tr>
+                              </thead>
+                              <tbody id="premedicinestbody1year">
+                            <!--<tr>
+                                  <td class="d-none">${ prescriptionValue }</td>
+                                  <td>${ medicines[prescriptionValue] }</td>
+                                  <td>1</td>
+                                  <td><button class="btn btn-sm btn-danger">Remove</button></td>
+                                </tr> -->
+                              </tbody>
+                            </table>
+                          </div><!-- tableFixHead -->
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          <b>Subsequent <br> Booster <br> <small>(every 3 years)</small></b>
+                        </td>
+                        <td>
+                          <input type="text" id="preDate3years" name="preDate3years" class="form-control not-allowed" placeholder="mm-dd-yyyy" readonly="" disabled="" style="border: 1px solid rgb(206, 212, 218);">
+                        </td>
+                        <td>
+                          <select class="form-control not-allowed" id="preregimenType3years" name="preregimenType3years" style="width: 148px;" disabled="">
+                            <option value="intramuscular">Intramuscular</option>
+                            <option value="intradermal">Intradermal</option>
+                          </select>
+                        </td>
+                        <td>
+                          <div class="row">
+                            <div class="col-sm-12 d-flex">
+                              <select class="form-control not-allowed" id="preprescription3years" name="preprescription3years" disabled="">
+                                <!-- <option value="preExposure" >Medicine 1</option>
+                                <option value="postExposure">Medicine 2</option>
+                                <option value="postExposure">Medicine 3</option> -->
+                              </select>
+                              <button id="preaddMedicineBtn3years" class="btn btn-sm btn-primary ml-3 not-allowed" type="button" disabled="">  <i class="fas fa-plus"></i>  Add</button>
+                            </div><!-- /.col --> 
+                            <div class="d-flex justify-content-center" style="width: 240.766px; margin-left: 15px;">
+                              <span class="errorInput" id="errorpreprescription3years"></span>
+                            </div>
+                          </div><!-- /.row -->
+
+                          <!-- Treatment table -->
+                          <div class="tableFixHead border mt-2">
+                            <table class="table table-hover table-bordered table-sm" style="width: 100%; font-size: 14px; " id="premedicinesTable3years">
+                              <thead class="thead-light">
+                                <tr>
+                                  <th class="d-none">id</th>
+                                  <th>Medicines</th>
+                                  <th class="text-center">Quantity</th>
+                                  <th class="text-center">Action</th>
+                                </tr>
+                              </thead>
+                              <tbody id="premedicinestbody3years">
+                            <!--<tr>
+                                  <td class="d-none">${ prescriptionValue }</td>
+                                  <td>${ medicines[prescriptionValue] }</td>
+                                  <td>1</td>
+                                  <td><button class="btn btn-sm btn-danger">Remove</button></td>
+                                </tr> -->
+                              </tbody>
+                            </table>
+                          </div><!-- tableFixHead -->
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div><!-- /#exposureWrapperTable -->
+              </div><!-- /#exposureWrapperTableOverflow -->
+            </div>
+          </div>  
+
+          <div class="form-group mt-2 p-2">
+            <label for="remarksPreExposure">Remarks:</label>
+            <input type="text" class="form-control" name="remarksPreExposure" id="remarksPreExposure">
+          </div>
+        
+        </div>
+    </div><!-- /Pre Exposure Section -->
+
+    
+  </div><!-- /.patientExposureContent -->
+</div><!-- /.border --> 
+                          <div class="d-flex justify-content-center mt-4">
+                            <button type="button" class="btn btn-sm btn-secondary" id="infoPrevious"><i class="fas fa-arrow-left"></i> Patient Information</button>
+                          </div>  
+
+                        </div><!-- /#nav-treatment -->
+                      </div><!-- /#nav-tab-Content -->
+                        
+                      <div class="d-flex justify-content-end mt-4">
+                        <input type="button" class="btn btn-secondary mr-4" data-dismiss="modal" value="取消">
+                        <input type="submit" class="btn btn-primary" value="送出" id="addSubmit">
+                      </div>
+
+                      </form><!-- /form -->
+                    </div><!-- /.modal-body -->
+
+                  </div><!-- /.modal-content -->
+                </div><!-- ./modal-dialog -->
+              </div><!-- /.modal -->
+
+              <!-- Modal For Registration Success -->
+              <div class="modal fade bd-example-modal-sm" id="addPatientSuccessModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                    <h4 class="modal-title pt-2 pl-2 text-success" id="myModalLabel"><i class="fas fa-check"></i></h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body text-center">
+                      Patient added successfully!
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          </div><!-- /.container -->
+        </div><!-- /.container-fluid -->  
+      </div><!-- /#page-content-wrapper -->
+
+    </div><!-- /#wrapper --> 
+
+  </div>
     <!-- End main content -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src="mainpage.js"></script>
+
+    <!-- DataTable -->
+    <script src="./js/jquery.dataTables.min.js"></script>
+    <!--<script src="./js/dataTables.bootstrap4.min.js"></script> -->
+
     
 </body>
 </html>
