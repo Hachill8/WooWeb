@@ -21,13 +21,7 @@
     font-family: "Roboto", sans-serif;
   }
   
-  body.bg-img {
-    background-image: url("./img/syringe.jpg");
-    background-color: #393a3e;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-  }
+  
   
   /* DataTable Settings */
   th,
@@ -148,37 +142,6 @@
     overflow: hidden;
   }
   
-  /* Sidebar */
-  #sidebar-wrapper {
-    min-height: 100vh;
-    margin-left: -15rem;
-    -webkit-transition: margin 0.25s ease-out;
-    -moz-transition: margin 0.25s ease-out;
-    -o-transition: margin 0.25s ease-out;
-    transition: margin 0.25s ease-out;
-    position: fixed;
-    background-color: #ffffff;
-  }
-  
-  #sidebar-wrapper .sidebar-heading {
-    height: 9rem;
-  }
-  
-  #sidebar-wrapper #listWrapper {
-    width: 240px;
-    max-height: calc(100vh - 11rem);
-    overflow-y: auto;
-  }
-  
-  #sidebar-wrapper #listWrapper .list-group {
-    width: 15rem;
-  }
-  
-  #sidebar-wrapper #listWrapper .list-group .list-group-item {
-    border-top: 0;
-    border-bottom: 0;
-    padding-left: 1.5 rem;
-  }
   
   /* Page Content */
   
