@@ -4,7 +4,7 @@
     <title>WOO</title>
 
 	<meta charset="UTF-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-	<link rel="icon" type="image/png" href="assets/AT-pro-logo.png"/>
+	<link rel="icon" type="image/png" href="assets/greenhouse-effect.png"/>
 
 	<!-- Import lib -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
@@ -13,7 +13,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 	<!-- End import lib -->
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" />	
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css" integrity="sha512-rxThY3LYIfYsVCWPCW9dB0k+e3RZB39f23ylUYTEuZMDrN/vRqLdaCBo/FbvVT6uC2r0ObfPzotsfKF9Qc5W5g==" crossorigin="anonymous" />
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -38,7 +38,7 @@
         <ul class="navbar-nav">
              
             <li class="logo logo-light" style="color:black; font-size:25px; margin-top: 5px; margin-left: -10px;">VeryFarm</li>
-            <li class="logo logo-dark" style="color: white; font-size:25px; margin-top: 5px; margin-left: -10px;">Not12313Farm</li>    
+            <li class="logo logo-dark" style="color: white; font-size:25px; margin-top: 5px; margin-left: -10px;">NotFarm</li>    
             
         </ul>
         <!-- form -->
@@ -334,172 +334,65 @@
         <div class="row">
             <div class="col-3 col-m-6 col-sm-6">
                 <div class="counter bg-tem">
-                    <p>
-                        <i class="fas fa-temperature-high"></i>
+                    <p style="color: rgb(156, 156, 156);">
                         溫度
                     </p>
-                    <h2>18℃</h2>
-                    <h6>2021/01/01 13:00</h6>
+                    <h2 id="tempid">-999℃</h2>
+                    <h6 id="time1" style="color: rgb(156, 156, 156);">更新時間</h6>
                 </div>
             </div>
             <div class="col-3 col-m-6 col-sm-6">
                 <div class="counter bg-hum">
-                    <p>
-                        <i class="fas fa-tint"></i>
-                        濕度
+                    <p style="color: rgb(156, 156, 156);">
+                        相對濕度
                     </p>
-                    <h2>1024</h2>
-                    <h6>2021/01/01 11:00</h6>
+                    <h2 id="humid">-999%</h2>
+                    <h6 id="time2" style="color: rgb(156, 156, 156);">更新時間</h6>
                 </div>
             </div>
             <div class="col-3 col-m-6 col-sm-6">
                 <div class="counter bg-light">
-                    <p>
-                        <i class="fas fa-cloud-sun"></i>
-                        光照
+                    <p style="color: rgb(156, 156, 156);">
+                        天氣
                     </p>
-                    <h2>900</h2>
-                    <h6>2021/01/01 11:00</h6>
+                    <div style="margin:-4px 0px -10px">
+                        <img id="img" src="assets/day01.svg" />
+                    </div>
+                    
+                    <h6 id="time3" style="color: rgb(156, 156, 156);">更新時間</h6>
                 </div>
             </div>
             <div class="col-3 col-m-6 col-sm-6">
                 <div class="counter bg-soil">
-                    <p>
-                        <i class="fas fa-seedling"></i>
+                    <p style="color: rgb(156, 156, 156);">
                         土壤濕度
                     </p>
-                    <h2>1024</h2>
-                    <h6>2021/01/01 12:00</h6>
+                    <h2>-</h2>
+                    <h6 id="newupdatetime3" style="color: rgb(156, 156, 156);">更新時間 : -</h6>
                 </div>
+        
             </div>
-
+        </div>
+        <div class="row">
             <div class="col-12 col-m-12 col-sm-12">
                 <div class="card">
                     <div class="card-header">
                         <h3>
-                            sensor1|sensor2|氣象站 溫度比較
+                             東華｜過去24小時溫度
                         </h3>
+                    
                     </div>
                     <div class="card-content">
-                        <canvas id="lineChart"></canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="col-8 col-m-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>
-                            今日做的事
-                        </h3>
-                        <i class="fas fa-ellipsis-h"></i>
-                    </div>
-                    <div class="card-content">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>作物</th>
-                                    <th>區域</th>
-                                    <th>事項</th>
-                                    <th>時間</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>番茄</td>
-                                    <td>A10</td>
-                                    <td>
-                                        <span class="dot">
-                                            <i class="bg-planting"></i>
-                                            定植
-                                        </span>
-                                    </td>
-                                    <td>2021/01/01 08:00</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>奶白</td>
-                                    <td>B10</td>
-                                    <td>
-                                        <span class="dot">
-                                            <i class="bg-harvest"></i>
-                                            收成
-                                        </span>
-                                    </td>
-                                    <td>2021/01/01 14:00</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>青江菜</td>
-                                    <td>C03</td>
-                                    <td>
-                                        <span class="dot">
-                                            <i class="bg-planting"></i>
-                                            定植
-                                        </span>
-                                    </td>
-                                    <td>2021/01/01 15:00</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4 col-m-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>
-                            每日濕度
-                        </h3>
-                    </div>
-                    <div class="card-content">
-                        <canvas id="barChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        
-
-        
-            <div class="col-6 col-m-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>
-                            sensor1 溫度、濕度比較
-                        </h3>
-                    </div>
-                    <div class="card-content">
-                        <canvas id="lineChart2"></canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-m-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>
-                            sensor2 溫度、濕度比較
-                        </h3>
-                    </div>
-                    <div class="card-content">
-                        <canvas id="lineChart3"></canvas>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-12 col-m-12 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>
-                            sensor1|sensor2 濕度比較
-                        </h3>
-                    </div>
-                    <div class="card-content">
-                        <canvas id="lineChart4"></canvas>
+                        <canvas id="ndhu_cwb_temperature_linechart"></canvas>
                     </div>
                 </div>
             </div>
         </div>
-            
+
+        
+
+        
+
             
         
 
@@ -518,6 +411,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="mainpage.js"></script>
+    <script src="realtime.js"></script>
     
 </body>
 <div class="form-content" style="display:none;">
