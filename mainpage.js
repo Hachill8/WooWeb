@@ -14,25 +14,25 @@ const themeLight = 'light'
 const body = document.getElementsByTagName('body')[0]
 
 function setCookie(cname, cvalue, exdays) {
-    var d = new Date()
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000))
-    var expires = "expires="+d.toUTCString()
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/"
+	var d = new Date()
+	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000))
+	var expires = "expires=" + d.toUTCString()
+	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/"
 }
 
 function getCookie(cname) {
-    var name = cname + "="
-    var ca = document.cookie.split(';')
-    for(var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1)
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length)
-      }
-    }
-    return ""
+	var name = cname + "="
+	var ca = document.cookie.split(';')
+	for (var i = 0; i < ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1)
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length)
+		}
+	}
+	return ""
 }
 
 loadTheme()
@@ -58,11 +58,11 @@ function collapseSidebar() {
 	body.classList.toggle('sidebar-expand')
 }
 
-function showContent(){
-	
+function showContent() {
+
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
 	openCloseDropdown(event)
 }
 
@@ -99,13 +99,13 @@ function processFormData() {
 	const date2 = form.elements.date2.value;
 	var d1 = document.getElementById("#Date1").value;
 	//$('.datepicker').on('change', function() { $('p').text($('#Date1').val()) })
-	console.log($('.datepicker').on('change', function() { $('#Date1').val() })+"88");
+	console.log($('.datepicker').on('change', function () { $('#Date1').val() }) + "88");
 }
-var date = new Date(),date2 = new Date();
-var ddd="we are";
+var date = new Date(), date2 = new Date();
+var ddd = "we are";
 function bootBoxContent() {
 	var content = $(".form-content").clone();
-	
+
 	$(content).show();
 	content.find(".datepicker1").datepicker({
 		format: 'yyyy/mm/dd',
@@ -119,76 +119,73 @@ function bootBoxContent() {
 		keyboardNavigation: false,
 		endDate: new Date(),
 	}).on('changeDate', function (selected) {
-        var minDate = new Date(selected.date.valueOf());
-        $('.datepicker2').datepicker('setStartDate', minDate);
+		var minDate = new Date(selected.date.valueOf());
+		$('.datepicker2').datepicker('setStartDate', minDate);
 		$('.datepicker2').datepicker('setEndDate', new Date());
 		//$('#Date2').datepicker('setDate', minDate);
 		date = $(this).val();
-    });
+	});
 	content.find(".datepicker2").datepicker({
-	  format: 'yyyy/mm/dd',
-	  autoclose: true,
-	  clearBtn: true,
-	  todayBtn: true,
-	  disableTouchKeyboard: true,
-	  multidate: false,
-	  todayHighlight: true,
-	  weekStart: 1,
-	  keyboardNavigation: false,
-	  endDate: new Date(),
-  }).on('changeDate', function (selected) {
+		format: 'yyyy/mm/dd',
+		autoclose: true,
+		clearBtn: true,
+		todayBtn: true,
+		disableTouchKeyboard: true,
+		multidate: false,
+		todayHighlight: true,
+		weekStart: 1,
+		keyboardNavigation: false,
+		endDate: new Date(),
+	}).on('changeDate', function (selected) {
 		//var maxDate = new Date(selected.date.valueOf());
 		//$('#Date2').datepicker('setDate', maxDate);
 		date2 = $(this).val();
 	});
 	return content;
 }
-$(document).ready(function() {
-	$("#history").on("click", function(event) {	
-	  	var modal = bootbox.dialog({
-		  	message: bootBoxContent(),
-		  	title: "歷史紀錄搜尋",
-		  	buttons: [
-			{
-			  	label: "取消",
-			  	className: "btn btn-default pull-left",
-			  	callback: function() {
-					console.log("just do something on close");
-			  	}
-			},
-			{
-			  	label: "搜尋",
-			  	className: "btn btn-primary pull-left",
-			  	callback: function(result) { 
-					var storyId = $(".searcha").attr('href');
-					console.log(date.toString());
-					console.log(storyId);
-					if (result) {
-						window.location.href = storyId+"?sensor="+"&"+date+"&"+date2;
-				 	}
-			  	}
-			}
-		  	],
-		  	show: false,
-		  	onEscape: function() 
-		  	{ modal.modal("hide"); }
-	  	});
-	  	modal.modal("show");
+$(document).ready(function () {
+	$("#history").on("click", function (event) {
+		var modal = bootbox.dialog({
+			message: bootBoxContent(),
+			title: "歷史紀錄搜尋",
+			buttons: [
+				{
+					label: "取消",
+					className: "btn btn-default pull-left",
+					callback: function () {
+						console.log("just do something on close");
+					}
+				},
+				{
+					label: "搜尋",
+					className: "btn btn-primary pull-left",
+					callback: function (result) {
+						var storyId = $(".searcha").attr('href');
+						console.log(date.toString());
+						console.log(storyId);
+						if (result) {
+							window.location.href = storyId + "?sensor=" + "&" + date + "&" + date2;
+						}
+					}
+				}
+			],
+			show: false,
+			onEscape: function () { modal.modal("hide"); }
+		});
+		modal.modal("show");
 	});
-	
-	
+
+
 })
-function doAction(dd)
-{
-    var val=$('#Date1').datepicker('getDate'); 
+function doAction(dd) {
+	var val = $('#Date1').datepicker('getDate');
 	date.toLocaleDateString();
-	$('.datepicker').datepicker().change( function() { $('#Date1').val(); });
-    console.log(date+"89");
+	$('.datepicker').datepicker().change(function () { $('#Date1').val(); });
+	console.log(date + "89");
 }
-function doAction2(dd)
-{
-    var val=$('#Date1').datepicker('getDate'); 
-	ddd=dd.toUTCString();
-	$('.datepicker').datepicker().change( function() { $('#Date1').val(); });
-    console.log(dd+"88");
+function doAction2(dd) {
+	var val = $('#Date1').datepicker('getDate');
+	ddd = dd.toUTCString();
+	$('.datepicker').datepicker().change(function () { $('#Date1').val(); });
+	console.log(dd + "88");
 }
