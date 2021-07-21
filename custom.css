@@ -1,0 +1,243 @@
+/* roboto-regular - latin */
+@font-face {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    src: url("./fonts/roboto-v20-latin-regular.eot"); /* IE9 Compat Modes */
+    src: local("Roboto"), local("Roboto-Regular"),
+      url("./fonts/roboto-v20-latin-regular.eot?#iefix")
+        format("embedded-opentype"),
+      /* IE6-IE8 */ url("./fonts/roboto-v20-latin-regular.woff2") format("woff2"),
+      /* Super Modern Browsers */ url("./fonts/roboto-v20-latin-regular.woff")
+        format("woff"),
+      /* Modern Browsers */ url("./fonts/roboto-v20-latin-regular.ttf")
+        format("truetype"),
+      /* Safari, Android, iOS */
+        url("./fonts/roboto-v20-latin-regular.svg#Roboto") format("svg"); /* Legacy iOS */
+  }
+  
+  body {
+    overflow-x: hidden;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  
+  
+  /* DataTable Settings */
+  th,
+  td {
+    white-space: nowrap;
+  }
+  tbody {
+    cursor: pointer;
+  }
+  
+  /* Utilities */
+  .cbg-dark {
+    background: #393a3e;
+  }
+  
+  .pointer {
+    cursor: pointer;
+  }
+  
+  .not-allowed {
+    cursor: not-allowed;
+  }
+  
+  .activeTab,
+  .activeTab:hover {
+    color: orange;
+  }
+  
+  #active {
+    color: orange;
+  }
+  
+  .h-vh {
+    min-height: 100vh;
+  }
+  
+  .height-100-vh-fixed {
+    height: 100vh;
+  }
+  
+  .width-100-fixed {
+    width: 100%;
+  }
+  
+  .remove-link-style {
+    text-decoration: none;
+  }
+  
+  .remove-link-style:hover {
+    text-decoration: none;
+  }
+  
+  .errorInput {
+    color: red;
+    font-size: 90%;
+    margin-top: 0.25;
+  }
+  
+  /* Fix table head */
+  .tableFixHead {
+    overflow: auto;
+    min-height: 0;
+    max-height: 120px;
+    width: 315px;
+  }
+  .tableFixHead th {
+    position: sticky;
+    top: 0;
+  }
+  .tableFixHead table {
+    border-collapse: separate; /* Don't collapse */
+    border-spacing: 0px;
+    border: 0.5px solid black;
+  }
+  
+  /* Login Form */
+  #loginHeader {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  
+  .login-wrapper {
+    width: 490px;
+    height: 470px;
+    background: #fff;
+    padding: 0 2.5rem 0 2.5rem;
+  }
+  
+  .login-wrapper #loginForm #submit:hover {
+    background: #5a5c63;
+  }
+  
+  #user-icon-wrapper {
+    font-size: 2.1rem;
+    background: #393a3e;
+    color: #fff;
+    box-sizing: border-box;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto 0 auto;
+  }
+  
+  #show_hide_password .input-group-text:hover,
+  #show_hide_repassword .input-group-text:hover,
+  #show_hide_deactivate_password .input-group-text:hover,
+  #show_hide_oldpassword .input-group-text:hover,
+  #show_hide_newpassword .input-group-text:hover,
+  #show_hide_newrepassword .input-group-text:hover {
+    color: #333;
+    cursor: pointer;
+  }
+  
+  /* Wrapper */
+  #wrapper {
+    overflow: hidden;
+  }
+  
+  
+  /* Page Content */
+  
+  #page-content-wrapper {
+    min-width: 100vw;
+    margin-left: 0;
+    -webkit-transition: margin 0.25s ease-out;
+    -moz-transition: margin 0.25s ease-out;
+    -o-transition: margin 0.25s ease-out;
+    transition: margin 0.25s ease-out;
+    background: #f4f3ef;
+  }
+  
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+  }
+  
+  #wrapper.toggled #page-content-wrapper {
+    margin-left: 15rem;
+  }
+  
+  #page-content-wrapper .navbar {
+    position: fixed;
+    width: 100%;
+    -webkit-transition: margin 0.25s ease-out;
+    -moz-transition: margin 0.25s ease-out;
+    -o-transition: margin 0.25s ease-out;
+    transition: margin 0.25s ease-out;
+    background: #393a3e;
+    z-index: 100;
+  }
+  
+  #page-content-wrapper .navbar .navbar-toggler {
+    border: 1px solid #dee2e6;
+    cursor: pointer;
+  }
+  
+  #page-content-wrapper .navbar .navbar-toggler:hover {
+    background: #000;
+  }
+  
+  #page-content-wrapper .navbar .navbar-toggler i {
+    color: #fff;
+  }
+  
+  #page-content-wrapper .navbar .navbar-toggler-icon {
+    color: #000;
+  }
+  
+  #page-content-wrapper .navbar .currentLogin {
+    margin-right: 16rem;
+  }
+  
+  #page-content-wrapper .navbar #currentLoginLabel {
+    background: #393a3e;
+    color: #fff;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.25s ease-out;
+  }
+  
+  @media (max-width: 768px) {
+    #page-content-wrapper .navbar .currentLogin {
+      margin-right: 0;
+    }
+  
+    .login-wrapper {
+      width: 280px;
+      background: #fff;
+      padding: 0 1.5rem 0 1.5rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    #sidebar-wrapper {
+      margin-left: 0;
+    }
+  
+    #page-content-wrapper {
+      margin-left: 15rem;
+      min-width: 0;
+      width: 100%;
+    }
+  
+    #wrapper.toggled #page-content-wrapper {
+      margin-left: 0;
+    }
+  
+    #wrapper.toggled #sidebar-wrapper {
+      margin-left: -15rem;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .modal-lg {
+      width: 90%;
+    }
+  }
+  

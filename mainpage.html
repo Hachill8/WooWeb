@@ -3,14 +3,27 @@
 <head>
     <title>WOO</title>
 
+<<<<<<< HEAD
     <meta charset="UTF-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="icon" type="image/png" href="assets/greenhouse-effect.png"/>
+=======
+	<meta charset="UTF-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="icon" type="image/png" href="assets/greenhouse-effect.png"/>
+>>>>>>> 341131b0d5588447e799f1dc0ed35c8bde41f694
 
     <!-- Import lib -->
 
+<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
     <link rel="stylesheet" type="text/css" href="fontawesome-free/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+=======
+    <!-- 這個link會影響排版 -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" />	
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css" integrity="sha512-rxThY3LYIfYsVCWPCW9dB0k+e3RZB39f23ylUYTEuZMDrN/vRqLdaCBo/FbvVT6uC2r0ObfPzotsfKF9Qc5W5g==" crossorigin="anonymous" />
+	<link rel="stylesheet" type="text/css" href="style.css">
+>>>>>>> 341131b0d5588447e799f1dc0ed35c8bde41f694
 
     <!-- End import lib -->
     
@@ -43,7 +56,11 @@
         <ul class="navbar-nav">
              
             <li class="logo logo-light" style="color:black; font-size:25px; margin-top: 5px; margin-left: -10px;">VeryFarm</li>
+<<<<<<< HEAD
             <li class="logo logo-dark" style="color: white; font-size:25px; margin-top: 5px; margin-left: -10px;">VeryFarm</li>    
+=======
+            <li class="logo logo-dark" style="color: white; font-size:25px; margin-top: 5px; margin-left: -10px;">NotFarm</li>    
+>>>>>>> 341131b0d5588447e799f1dc0ed35c8bde41f694
             
         </ul>
         <!-- form -->
@@ -321,7 +338,11 @@
                 </a>
             </li>
             <li class="sidebar-nav-item">
+<<<<<<< HEAD
                 <a href="#" class="sidebar-nav-link">
+=======
+                <a href="./traceability_index.html" class="sidebar-nav-link" >
+>>>>>>> 341131b0d5588447e799f1dc0ed35c8bde41f694
                     <div>
                         <i class="fas fa-calendar-alt"></i>
                     </div>
@@ -340,41 +361,72 @@
             <div class="col-3 col-m-6 col-sm-6">
                 <div class="counter bg-tem">
                     <p style="color: rgb(156, 156, 156);">
+<<<<<<< HEAD
                         <i class="fas fa-temperature-high"></i>
                         溫度
                     </p>
                     <h2>18℃</h2>
                     <h6 style="color: rgb(156, 156, 156);">2021/01/01 13:00</h6>
+=======
+                        溫度
+                    </p>
+                    <h2 id="tempid">-999℃</h2>
+                    <h6 id="time1" style="color: rgb(156, 156, 156);">更新時間</h6>
+>>>>>>> 341131b0d5588447e799f1dc0ed35c8bde41f694
                 </div>
             </div>
             <div class="col-3 col-m-6 col-sm-6">
                 <div class="counter bg-hum">
                     <p style="color: rgb(156, 156, 156);">
+<<<<<<< HEAD
                         <i class="fas fa-tint"></i>
                         相對濕度
                     </p>
                     <h2>40%</h2>
                     <h6 style="color: rgb(156, 156, 156);">2021/01/01 11:00</h6>
+=======
+                        相對濕度
+                    </p>
+                    <h2 id="humid">-999%</h2>
+                    <h6 id="time2" style="color: rgb(156, 156, 156);">更新時間</h6>
+>>>>>>> 341131b0d5588447e799f1dc0ed35c8bde41f694
                 </div>
             </div>
             <div class="col-3 col-m-6 col-sm-6">
                 <div class="counter bg-light">
                     <p style="color: rgb(156, 156, 156);">
+<<<<<<< HEAD
                         <i class="fas fa-cloud-sun"></i>
                         天氣
                     </p>
                     <h2>陰天</h2>
                     <h6 style="color: rgb(156, 156, 156);">2021/03/09 11:00</h6>
+=======
+                        天氣
+                    </p>
+                    <div style="margin:-4px 0px -10px">
+                        <img id="img" src="assets/day01.svg" />
+                    </div>
+                    
+                    <h6 id="time3" style="color: rgb(156, 156, 156);">更新時間</h6>
+>>>>>>> 341131b0d5588447e799f1dc0ed35c8bde41f694
                 </div>
             </div>
             <div class="col-3 col-m-6 col-sm-6">
                 <div class="counter bg-soil">
                     <p style="color: rgb(156, 156, 156);">
+<<<<<<< HEAD
                         <i class="fas fa-seedling"></i>
                         土壤濕度
                     </p>
                     <h2>55%</h2>
                     <h6 style="color: rgb(156, 156, 156);">2021/01/01 12:00</h6>
+=======
+                        土壤濕度
+                    </p>
+                    <h2>-</h2>
+                    <h6 id="newupdatetime3" style="color: rgb(156, 156, 156);">更新時間 : -</h6>
+>>>>>>> 341131b0d5588447e799f1dc0ed35c8bde41f694
                 </div>
         
             </div>
@@ -384,10 +436,12 @@
                 <div class="card">
                     <div class="card-header">
                         <h3>
-                            sensor1|sensor2|氣象站 溫度比較
+                             東華｜過去24小時溫度
                         </h3>
+                    
                     </div>
                     <div class="card-content">
+<<<<<<< HEAD
                         <canvas id="lineChart"></canvas>
                     </div>
                 </div>
@@ -464,10 +518,14 @@
                   </div>
                     <div class="card-content">
                         <canvas id="barChart"></canvas>
+=======
+                        <canvas id="ndhu_cwb_temperature_linechart"></canvas>
+>>>>>>> 341131b0d5588447e799f1dc0ed35c8bde41f694
                     </div>
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
         <div class="row">
             <div class="col-6 col-m-12 col-sm-12">
                 <div class="card">
@@ -512,6 +570,14 @@
        
         
 
+=======
+
+        
+
+        
+
+            
+>>>>>>> 341131b0d5588447e799f1dc0ed35c8bde41f694
         
 
     </div>
@@ -533,6 +599,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
+<<<<<<< HEAD
+=======
+    <script src="mainpage.js"></script>
+    <script src="realtime.js"></script>
+>>>>>>> 341131b0d5588447e799f1dc0ed35c8bde41f694
     
 </body>
 <div class="form-content" style="display:none;">
