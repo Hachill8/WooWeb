@@ -417,7 +417,7 @@
                 <h4 class="mb-4">生產履歷</h4>
                 <ul class="nav nav-tabs mb-4">
                     <li class="nav-item">
-                        <a class="nav-link " href="#">&nbsp;&nbsp;作物紀錄&nbsp;&nbsp;</a>
+                        <a class="nav-link " href="./traceability.php">&nbsp;&nbsp;作物紀錄&nbsp;&nbsp;</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="./downloadpdf.php">檔案下載</a>
