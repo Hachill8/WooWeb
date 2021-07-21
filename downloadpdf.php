@@ -2,110 +2,29 @@
 <html>
 <head>
     <title>WOO</title>
-
+    <!-- Required meta tags -->
 	<meta chartset="UTF-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 	
-	<!-- Import lib -->
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+	<!-- Import lib -->	
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
 	<link rel="stylesheet" type="text/css" href="fontawesome-free/css/all.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 	<!-- End import lib -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" />	
 
-    <!--date range-->
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.3.1/dt-1.10.25/datatables.min.css"/>
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css" integrity="sha512-rxThY3LYIfYsVCWPCW9dB0k+e3RZB39f23ylUYTEuZMDrN/vRqLdaCBo/FbvVT6uC2r0ObfPzotsfKF9Qc5W5g==" crossorigin="anonymous" />
 	<link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>    
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>    
-    
-    <script>
-    $(function() {
-    $("#datepicker1").datepicker({   
-    //可使用下拉式選單 - 月份   
-    changeMonth : true,  
-    //可使用下拉式選單 - 年份   
-    changeYear : true,   
-    //設定 下拉式選單月份 在 年份的後面   
-    showMonthAfterYear : true    });
-    $("#datepicker2").datepicker({   
-    //可使用下拉式選單 - 月份   
-    changeMonth : true,  
-    //可使用下拉式選單 - 年份   
-    changeYear : true,   
-    //設定 下拉式選單月份 在 年份的後面   
-    showMonthAfterYear : true    });   
-    });
-    
-    $(function() {
 
-    ( function( factory ) {  
-    if ( typeof define === "function" && define.amd ) {   
-    // AMD. Register as an anonymous module.   
-    define( [ "../widgets/datepicker" ], factory );   
-    } else {  
-    // Browser globals  
-    factory( jQuery.datepicker1 );   
-    }  
-    }( function( datepicker1 ) {   
-    datepicker1.regional[ "zh-TW" ] = {  
-    closeText: "關閉",   
-    prevText: "&#x3C;上個月",   
-    nextText: "下個月&#x3E;",   
-    currentText: "今天",  
-    monthNames: [ "一月","二月","三月","四月","五月","六月",
-    "七月","八月","九月","十月","十一月","十二月" ],
-    monthNamesShort: [ "一月","二月","三月","四月","五月","六月",
-    "七月","八月","九月","十月","十一月","十二月" ],
-    dayNames: [ "星期日","星期一","星期二","星期三","星期四","星期五","星期六" ],   
-    dayNamesShort: [ "週日","週一","週二","週三","週四","週五","週六" ],
-    dayNamesMin: [ "日","一","二","三","四","五","六" ],
-    weekHeader: "週",
-    dateFormat: "yy-mm-dd",
-    firstDay: 1,  
-    isRTL: false,    
-    showMonthAfterYear: true,    
-    yearSuffix: "年" };    
-    datepicker1.setDefaults( datepicker.regional[ "zh-TW" ] );   
-    return datepicker1.regional[ "zh-TW" ];   
-    } ) );
-
-    ( function( factory ) {  
-    if ( typeof define === "function" && define.amd ) {   
-    // AMD. Register as an anonymous module.   
-    define( [ "../widgets/datepicker" ], factory );   
-    } else {  
-    // Browser globals  
-    factory( jQuery.datepicker1 );   
-    }  
-    }( function( datepicker2 ) {   
-    datepicker2.regional[ "zh-TW" ] = {  
-    closeText: "關閉",   
-    prevText: "&#x3C;上個月",   
-    nextText: "下個月&#x3E;",   
-    currentText: "今天",   
-    monthNames: [ "一月","二月","三月","四月","五月","六月",    
-    "七月","八月","九月","十月","十一月","十二月" ],   
-    monthNamesShort: [ "一月","二月","三月","四月","五月","六月",  
-    "七月","八月","九月","十月","十一月","十二月" ],   
-    dayNames: [ "星期日","星期一","星期二","星期三","星期四","星期五","星期六" ],   
-    dayNamesShort: [ "週日","週一","週二","週三","週四","週五","週六" ],
-    dayNamesMin: [ "日","一","二","三","四","五","六" ],
-    weekHeader: "週",
-    dateFormat: "yy-mm-dd",
-    firstDay: 1,   
-    isRTL: false,   
-    showMonthAfterYear: true,   
-    yearSuffix: "年" };   
-    datepicker2.setDefaults( datepicker.regional[ "zh-TW" ] );   
-    return datepicker2.regional[ "zh-TW" ];   
-    } ) );
     
-    });    
-        
-    </script>
-    <!--end date range-->
 </head>
 <style>
     * {
@@ -459,7 +378,7 @@
     <div class="sidebar">
         <ul class="sidebar-nav">
             <li class="sidebar-nav-item">
-                <a href="./mainpage.html" class="sidebar-nav-link active">
+                <a href="./mainpage.html" class="sidebar-nav-link">
                     <div>
                         <i class="fas fa-tachometer-alt"></i>
                     </div>
@@ -469,17 +388,16 @@
                 </a>
             </li>
             <li class="sidebar-nav-item">
-                <a href="#" class="sidebar-nav-link" >
-                    <div>
-                        <i class="fas fa-history"></i>
-                    </div>
-                    <span id="history">
-                        History
-                    </span>
-                </a>
-            </li>
+              <a href="#" class="sidebar-nav-link" >
+                  <div>
+                      <i class="fas fa-history"></i>
+                  </div>
+                  <span id="historyt">
+                      History
+                  </span>
+              </a>
             <li class="sidebar-nav-item">
-                <a href="traceability_ index.html" class="sidebar-nav-link" >
+                <a href="traceability.php" class="sidebar-nav-link active" >
                     <div>
                         <i class="fas fa-calendar-alt"></i>
                     </div>
@@ -494,227 +412,175 @@
     <!-- End sidebar -->
     <!-- Main content -->
     <div class="wrapper">
-        <div class="daterange">
-            <p class="datag"> 
-                工作日期   <input type="text" id="datepicker1" value="" name='datepicker'> 
-                至 <input type="text" id="datepicker2" value="" name='datepicker'>   
-            </p>        
-        </div>
-        <div class="col">
-            <div class="option">
-                <p>作物名稱
-                    <select>
-                        <option>請選擇</option>
-                        <option>日本小松</option>
-                        <option>小白菜</option>    
-                    </select>
-                </p>
-            </div>
-            <div class="option">
-                <p>田區代號
-                    <select>
-                        <option>請選擇</option>
-                        <option>A10</option>
-                    </select>
-                </p>
-            </div>
-            <div class="option">
-                <input type="submit" name="" value="搜尋">
-            </div>
-        </div>
-
-        <table class="content-table">
-            <thead>
-            <tr>
-                <th>項次</th>
-                <th>報表名稱</th>
-                <th></th>
-                
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>人員記錄-A4</td>
-                <td>
-                    <div class="ph-float">
-                        <a href='#' class='ph-button ph-btn-green'>PDF</a>
+        <div id="page-content-wraper" class="h-vh">
+            <div class="container bg-white p-3">
+                <h4 class="mb-4">生產履歷</h4>
+                <ul class="nav nav-tabs mb-4">
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">&nbsp;&nbsp;作物紀錄&nbsp;&nbsp;</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./downloadpdf.php">檔案下載</a>
+                    </li>
+                </ul>
+            
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="container">
+                        <form id="saveRecordForm" action="javascript:void();" method="post">
+                            <div class="modal-body">
+                                <div class="mb-3 row">
+                                    <label for="workdate" class="col-sm-3 col-form-label">開始日期</label>
+                                    <div class="col-sm-9">
+                                        <input type="date" class="form-control pointer" placeholder="yyyy-mm-dd" id="workdate" name="datestart"  style="border: 1px solid rgb(206, 212, 218);">
+                                    </div>
+                                    <label for="workdate" class="col-sm-3 col-form-label">結束日期</label>
+                                    <div class="col-sm-9">
+                                        <input type="date" class="form-control pointer" placeholder="yyyy-mm-dd" id="workdate" name="dateend"  style="border: 1px solid rgb(206, 212, 218);">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="areanum" class="col-sm-3 col-form-label">田區編號</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-select" aria-label="Default select example" id="areanum" name="areanum">
+                                            
+                                            <option value="C">C</option>                                                
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                
+                                <button type="submit" class="btn btn-primary">搜尋</button>
+                            </div>
+                        </form>
                     </div>
-                </td>               
-            </tr>
-            <tr class="active-row">
-                <td>2</td>
-                <td>農機具作業紀錄-A4</td>
-                <td>
-                    <div class="ph-float">
-                        <a href='#' class='ph-button ph-btn-green'>PDF</a>
-                    </div> 
-                </td>                
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>資材使用紀錄-A4</td>
-                <td>
-                    <div class="ph-float">
-                        <a href='#' class='ph-button ph-btn-green'>PDF</a>
-                    </div>
-                </td>               
-            </tr>
-            </tbody>
-        </table>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- End main content -->
+    
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.3.1/dt-1.10.25/datatables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+   
+
+    
+    <!--history start-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha512-n6dYFOG599s4/mGlA6E+YLgtg9uPTOMDUb0IprSMDYVLr0ctiRryPEQ8gpM4DCMlx7M2G3CK+ZcaoOoJolzdCg==" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script language="JavaScript" src="mainpage.js" type="text/javascript" charset="UTF-8"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha512-n6dYFOG599s4/mGlA6E+YLgtg9uPTOMDUb0IprSMDYVLr0ctiRryPEQ8gpM4DCMlx7M2G3CK+ZcaoOoJolzdCg==" crossorigin="anonymous"></script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="mainpage.js"></script>
-    <script>
-        $(document).ready(function() {
-        $("#history").on("click", function(event) {
-        var modal = bootbox.dialog({
-            message: bootBoxContent(),
-            title: "歷史紀錄搜尋",
-            buttons: [
-                {
-                label: "取消",
-                className: "btn btn-default pull-left",
-                callback: function() {
-                    console.log("just do something on close");
-                }
-                },
-                {
-                label: "搜尋",
-                className: "btn btn-primary pull-left",
-                callback: function(result) {
-                    href = $(this).attr("./history.html");
-                    if (result) {
-                        window.location = href;
-                    }
-                }
-                }
-            ],
-            show: false,
-            onEscape: function() 
-            { modal.modal("hide"); }
-        });
-        modal.modal("show");
-        });
-        function bootBoxContent() {
-        var content = $(".form-content").clone();
-        $(content).show();
-        content.find(".datepicker").datepicker({
-            format: 'yyyy/mm/dd',
-            clearBtn: true,
-            todayBtn: true,
-            disableTouchKeyboard: true,
-            multidate: false,
-            todayHighlight: true,
-            weekStart: 1,
-            keyboardNavigation: false,
-            endDate: new Date(),
-        });
-        return content;
-        }
-    })
-    </script>
+    <script src="traceability.js"></script>
+    <!--history end-->
+    <!-- End main content -->
     
 </body>
 <div class="form-content" style="display:none;">
-	<form class="needs-validation" novalidate>
+    <a class="searchb" href="./history.html"></a>
+    <form class="needs-validation" novalidate name='form1' id='form1'>
         <h5 class="mb-0"><strong>感測器</strong></h5>
-		<div class="row">
-			<div class="col-md-12">
-				<label class="PillList-item">
-				<input type="checkbox" name="feature" value="5">
-				<span class="PillList-label">全部
-				<span class="Icon Icon--checkLight Icon--smallest"><i class="fa fa-check"></i></span>
-				</span>
-				</label>
-				
-				<label class="PillList-item">
-				<input type="checkbox" name="feature" value="1">
-				<span class="PillList-label">溫度
-				<span class="Icon Icon--checkLight Icon--smallest"><i class="fa fa-check"></i></span>
-				</span>
-				</label>
-		
-				<label class="PillList-item">
-				<input type="checkbox" name="feature" value="2">
-				<span class="PillList-label">濕度
-				<span class="Icon Icon--checkLight Icon--smallest"><i class="fa fa-check"></i></span>
-				</span>
-				</label> 
-			
-			</div>
-		</div>
-		<h5 class="mb-0"><strong>日期</strong></h5>
-		<div class="form-row">
-			<div class="datepicker-container col-xs-12 col-sm-6" id="datepicker1"><span class="badge datepicker-toggler">開始</span>
-				<div class="datepicker date input-group"><input type="text" class="form-control datepicker" id="reservationDate">
-					<div class="input-group-append"><span class="input-group-text"><i class="fas fa-calendar-alt"></i></span></div>
-				</div>
-			</div>
-			
-			<div class="datepicker-container col-xs-12 col-sm-6" id="datepicker2"><span class="badge datepicker-toggler">結束</span>
-				<div class="datepicker date input-group"><input type="text" class="form-control datepicker" id="reservationDate2">
-					<div class="input-group-append"><span class="input-group-text"><i class="fas fa-calendar-alt"></i></span></div>
-				</div>
-			</div>
-		</div>
-		<h5 class="mb-0"><strong>裝置</strong></h5>
-		<div class="row">
-			<div class="col-md-12">
-				<label class="PillList-item">
-				<input type="checkbox" name="feature" value="4">
-				<span class="PillList-label">全部
-				<!--<span class="Icon Icon--checkLight Icon--smallest"><i class="fa fa-check"></i></span>-->
-				</span>
-				</label>
-				
-				<label class="PillList-item">
-				<input type="checkbox" name="feature" value="4">
-				<span class="PillList-label">室內
-				<!--<span class="Icon Icon--checkLight Icon--smallest"><i class="fa fa-check"></i></span>-->
-				</span>
-				</label>
-				
-				<label class="PillList-item">
-				<input type="checkbox" name="feature" value="4">
-				<span class="PillList-label">室外
-				<!--<span class="Icon Icon--checkLight Icon--smallest"><i class="fa fa-check"></i></span>-->
-				</span>
-				</label>
-			</div>
-		</div>
-		<h5 class="mb-0"><strong>作物</strong></h5>
+        <div class="row">
+            <div class="col-md-12">
+                <label class="PillList-item">
+                <input type="checkbox" name="feature" value="light">
+                <span class="PillList-label">光照
+                <span class="Icon Icon--checkLight Icon--smallest"><i class="fa fa-check"></i></span>
+                </span>
+                </label>
+                
+                <label class="PillList-item">
+                <input type="checkbox" name="feature" value="temperature">
+                <span class="PillList-label">溫度
+                <span class="Icon Icon--checkLight Icon--smallest"><i class="fa fa-check"></i></span>
+                </span>
+                </label>
+        
+                <label class="PillList-item">
+                <input type="checkbox" name="feature" value="humidity">
+                <span class="PillList-label">濕度
+                <span class="Icon Icon--checkLight Icon--smallest"><i class="fa fa-check"></i></span>
+                </span>
+                </label> 
+            
+            </div>
+        </div>
+        <h5 class="mb-0"><strong>日期</strong></h5>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6" id="datepicker1">
+                <div class="datepicker date input-group">
+                    <input type="text" class="form-control datepicker1" name ="date1"id="Date1" placeholder="開始日期" autocomplete="off">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+            </div>
+            
+            <div class="col-xs-12 col-sm-6" id="datepicker2">
+                <div class="datepicker date input-group">
+                    <input type="text" class="form-control datepicker2" name ="date2"id="Date2" placeholder="結束日期" autocomplete="off">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+            </div>
+        </div>
+        <h5 class="mb-0"><strong>裝置</strong></h5>
+        <div class="row">
+            <div class="col-md-12">
+                <label class="PillList-item">
+                <input type="checkbox" name="environment" value="1">
+                <span class="PillList-label">氣象站
+                <span class="Icon Icon--checkLight Icon--smallest"><i class="fa fa-check"></i></span>
+                </span>
+                </label>
+                
+                <label class="PillList-item">
+                <input type="checkbox" name="environment" value="2">
+                <span class="PillList-label">棚內
+                <span class="Icon Icon--checkLight Icon--smallest"><i class="fa fa-check"></i></span>
+                </span>
+                </label>
+                
+                <label class="PillList-item">
+                <input type="checkbox" name="environment" value="3">
+                <span class="PillList-label">室外
+                <span class="Icon Icon--checkLight Icon--smallest"><i class="fa fa-check"></i></span>
+                </span>
+                </label>
+            </div>
+        </div>
+        <h5 class="mb-0"><strong>作物</strong></h5>
             <div class="form-group">
-			<!--<label for="vegetselect">作物</label>--這邊不確定會不會影響到後端曲資料-->
-			<select class="form-control mt-2" id="vegetselect">
-			    <option>小松</option>
-                <option>奶白</option>
-                <option>花椰菜</option>
-                <option>番茄</option>
-                <option>萵苣</option>
-			</select>
-		    </div>
-        <hr class="mb-4">
-        <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="same-address">
-            <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="save-info">
-            <label class="custom-control-label" for="save-info">Save this information for next time</label>
-        </div>
-    </form>
-</div>
+            <!--<label for="vegetselect">作物</label>--這邊不確定會不會影響到後端曲資料-->
+                <select class="form-select mt-2" id="vegetselect" onChange="vegetfunction(this);">
+                    <option value="brassica">小松</option>
+                    <option value="milkcabbage">奶白</option>
+                    <option value="broccoli">花椰菜</option>
+                    <option value="tomato">番茄</option>
+                    <option value="lettuce">萵苣</option>
+                </select>
+            </div>
+        <h5 class="mb-0 mt-3"><strong>棚架</strong></h5>
+            <div class="form-group">
+            <!--<label for="vegetselect">作物</label>--這邊不確定會不會影響到後端曲資料-->
+                <select class="form-select mt-2" id="scaffoldselect" onChange="scaffoldfunction(this);">
+                    <option value="A1">A區1</option>
+                    <option value="A2">A區2</option>
+                    <option value="A3">A區3</option>
+                    <option value="A4">A區4</option>
+                    <option value="A5">A區5</option>
+                </select>
+            </div>
+      </form>
+    </div>
 </html>
