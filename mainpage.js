@@ -369,17 +369,8 @@ var barChart = new Chart(ctx2, {
         }
 	}
 })
-function processFormData() {
-	const form = document.forms['form1'];    // 取得 name 屬性為 form 的表單
-	const sensor = form.elements.feature.value;  // 取得 elements 集合中 name 屬性為 name 的值
-	const date1 = form.elements.date1.value;// 取得 elements 集合中 name 屬性為 email 的值
-	const date2 = form.elements.date2.value;
-	var d1 = document.getElementById("#Date1").value;
-	//$('.datepicker').on('change', function() { $('p').text($('#Date1').val()) })
-	console.log($('.datepicker').on('change', function() { $('#Date1').val() })+"88");
-}
+
 var date = new Date(),date2 = new Date();
-var ddd="we are";
 function bootBoxContent() {
 	var content = $(".form-content").clone();
 	
@@ -396,33 +387,43 @@ function bootBoxContent() {
 		keyboardNavigation: false,
 		endDate: new Date(),
 	}).on('changeDate', function (selected) {
-        var minDate = new Date(selected.date.valueOf());
+        var minDate = new Date(selected.date.valueOf());/*讓使用者只能選取 開始日期之後 和 不能超過今天 的日期 */
         $('.datepicker2').datepicker('setStartDate', minDate);
 		$('.datepicker2').datepicker('setEndDate', new Date());
 		//$('#Date2').datepicker('setDate', minDate);
 		date = $(this).val();
     });
 	content.find(".datepicker2").datepicker({
-	  format: 'yyyy/mm/dd',
-	  autoclose: true,
-	  clearBtn: true,
-	  todayBtn: true,
-	  disableTouchKeyboard: true,
-	  multidate: false,
-	  todayHighlight: true,
-	  weekStart: 1,
-	  keyboardNavigation: false,
-	  endDate: new Date(),
-  }).on('changeDate', function (selected) {
+	  	format: 'yyyy/mm/dd',
+		autoclose: true,
+	  	clearBtn: true,
+	  	todayBtn: true,
+	  	disableTouchKeyboard: true,
+	  	multidate: false,
+	  	todayHighlight: true,
+	  	weekStart: 1,
+	  	keyboardNavigation: false,
+	  	endDate: new Date(),
+  	}).on('changeDate', function (selected) {
 		//var maxDate = new Date(selected.date.valueOf());
 		//$('#Date2').datepicker('setDate', maxDate);
 		date2 = $(this).val();
 	});
 	return content;
 }
+var veget, scaffold;
+function vegetfunction (sel) {
+	veget = sel.options[sel.selectedIndex].value;
+	console.log(veget);
+}
+function scaffoldfunction (sel) {
+	scaffold = sel.options[sel.selectedIndex].value;
+	console.log(scaffold);
+}
 $(document).ready(function() {
 	$("#history").on("click", function(event) {	
 	  	var modal = bootbox.dialog({
+			closeButton: false,
 		  	message: bootBoxContent(),
 		  	title: "歷史紀錄搜尋",
 		  	buttons: [
@@ -440,8 +441,16 @@ $(document).ready(function() {
 					var storyId = $(".searcha").attr('href');
 					console.log(date.toString());
 					console.log(storyId);
+					var sensorselected=[], environmentselected=[];
+					$("[name=feature]:checkbox:checked").each(function(){/*獲取使用者勾選的感測器 */
+						sensorselected.push($(this).val());
+					});
+					$("[name=environment]:checkbox:checked").each(function(){/*獲取使用者勾選的裝置 */
+						environmentselected.push($(this).val());
+					});
 					if (result) {
-						window.location.href = storyId+"?sensor="+"&"+date+"&"+date2;
+						window.location.href = storyId+"?sensor="+"&"+sensorselected+"&"+date+"&"+date2+"&"+environmentselected+"&"+veget+"&"+scaffold;
+						/*file:///C:/Users/Maggie/WooWeb/history.html?sensor=&temperature,Humidity&2020/11/15&2020/11/16&1,2,3 */
 				 	}
 			  	}
 			}
@@ -452,20 +461,4 @@ $(document).ready(function() {
 	  	});
 	  	modal.modal("show");
 	});
-	
-	
 })
-function doAction(dd)
-{
-    var val=$('#Date1').datepicker('getDate'); 
-	date.toLocaleDateString();
-	$('.datepicker').datepicker().change( function() { $('#Date1').val(); });
-    console.log(date+"89");
-}
-function doAction2(dd)
-{
-    var val=$('#Date1').datepicker('getDate'); 
-	ddd=dd.toUTCString();
-	$('.datepicker').datepicker().change( function() { $('#Date1').val(); });
-    console.log(dd+"88");
-}
