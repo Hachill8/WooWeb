@@ -251,13 +251,8 @@ body{
 .overlay-scrollbar::-webkit-scrollbar {
     width: 9px;
     height: 9px;
-<<<<<<< HEAD
-    overflow-x: hidden;
-    overflow-y: visible;
-=======
     overflow-y: hidden;
 	overflow-x: hidden;
->>>>>>> 341131b0d5588447e799f1dc0ed35c8bde41f694
 }
  
 .overlay-scrollbar:hover::-webkit-scrollbar {
