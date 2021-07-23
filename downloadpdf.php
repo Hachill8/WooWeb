@@ -413,47 +413,133 @@
     <!-- Main content -->
     <div class="wrapper">
         <div id="page-content-wraper" class="h-vh">
-            <div class="container bg-white p-3">
-                <h4 class="mb-4">生產履歷</h4>
-                <ul class="nav nav-tabs mb-4">
-                    <li class="nav-item">
-                        <a class="nav-link " href="./traceability.php">&nbsp;&nbsp;作物紀錄&nbsp;&nbsp;</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="./downloadpdf.php">檔案下載</a>
-                    </li>
-                </ul>
-            
+            <div class="container bg-white p-3 mw-100 mh-100" style="margin-top: 20px;">
+                <!-- <h4 class="mb-4">生產履歷</h4> -->
                 <div class="container-fluid">
+                    <ul class="nav nav-tabs mb-4">
+                        <li class="nav-item">
+                            <a class="nav-link " href="./traceability.php">&nbsp;&nbsp;作物紀錄&nbsp;&nbsp;</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./downloadpdf.php">檔案下載</a>
+                        </li>
+                    </ul> 
                     <div class="row">
-                        <div class="container">
-                        <form id="saveRecordForm" action="javascript:void();" method="post">
-                            <div class="modal-body">
-                                <div class="mb-3 row">
-                                    <label for="workdate" class="col-sm-3 col-form-label">開始日期</label>
-                                    <div class="col-sm-9">
-                                        <input type="date" class="form-control pointer" placeholder="yyyy-mm-dd" id="workdate" name="datestart"  style="border: 1px solid rgb(206, 212, 218);">
-                                    </div>
-                                    <label for="workdate" class="col-sm-3 col-form-label">結束日期</label>
-                                    <div class="col-sm-9">
-                                        <input type="date" class="form-control pointer" placeholder="yyyy-mm-dd" id="workdate" name="dateend"  style="border: 1px solid rgb(206, 212, 218);">
-                                    </div>
+                        <form method="POST">
+                            <div class="row mb-3">
+                                <label for="startdate" class="col-sm-1 col-form-label">開始日期</label>
+                                <div class="col-sm-4">
+                                    <input type="date" class="form-control pointer" placeholder="yyyy-mm-dd" id="startdate" name="startdate"  style="border: 1px solid rgb(206, 212, 218);">
                                 </div>
-                                <div class="mb-3 row">
-                                    <label for="areanum" class="col-sm-3 col-form-label">田區編號</label>
-                                    <div class="col-sm-9">
-                                        <select class="form-select" aria-label="Default select example" id="areanum" name="areanum">
-                                            
+                            </div>
+                            <div class="row mb-3">
+                                <label for="enddate" class="col-sm-1 col-form-label">結束日期</label>
+                                <div class="col-sm-4">
+                                    <input type="date" class="form-control pointer" placeholder="yyyy-mm-dd" id="enddate" name="enddate"  style="border: 1px solid rgb(206, 212, 218);">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="areanum" class="col-sm-1 col-form-label">田區編號</label>
+                                    <div class="col-sm-4">
+                                        <select class="form-select" aria-label="Default select example" id="search_areanum" name="search_areanum">   
                                             <option value="C">C</option>                                                
                                         </select>
                                     </div>
+                            </div>
+                            <fieldset class="row mb-3">
+                                <legend class="col-form-label col-sm-1 pt-0">表單選擇</legend>
+                                <div class="col-sm-10 pt-0">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="sheet[]" value="工作紀錄表" id="worksheet">
+                                        <label class="form-check-label" for="worksheet">
+                                        工作紀錄表
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="sheet[]" value="出貨紀錄表" id="shipmentsheet">
+                                        <label class="form-check-label" for="shipmentsheet">
+                                        出貨紀錄表
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </fieldset>
+                            <div class="row">
+                                
+                                <div class="col-sm-1 col-form-label">
+                                    <button type="submit" class="btn btn-primary btn-sm" name="search">搜尋</button>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                
-                                <button type="submit" class="btn btn-primary">搜尋</button>
-                            </div>
+                        
                         </form>
+                    </div>
+                    <div class="table-responsive" style="margin-top: 20px;">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>NO.</th>
+                                    <th>開始日期</th>
+                                    <th>結束日期</th>
+                                    <th>田區編號</th>
+                                    <th>表單類型</th>
+                                    <th>檔案下載</th>
+                                </tr>
+                            </thead>
+                        
+                        <tbody>
+                            <?php 
+                            
+                            if(array_key_exists('search', $_POST )) {
+                            search();}
+                            function search()
+                            {
+                                
+                                //echo "Hello World";
+                                $start=$_POST['startdate'];
+                                $end=$_POST['enddate'];
+                                $area=$_POST['search_areanum'];
+                                $sheet=$_POST['sheet'];
+                                $no=1;
+                                $StartDate='StartDate=';
+                                $EndDate='&EndDate=';
+                                $Area='&Area=';
+                                $url='http://134.208.97.191:8080/sensor_Webservice.asmx/exportPDF6?';
+                                //http://134.208.97.191:8080/sensor_Webservice.asmx/exportPDF6?StratDate=string&EndDate=string&Area=string
+                                $downloadurl=$url.$StartDate.$start.$EndDate.$end.$Area.$area;
+
+                                if($start !=""&& $end !=""&& $area !=""&& empty( $sheet )==false){
+                                    $N=count($sheet);
+                                    for($i=0; $i < $N; $i++){
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $no;?></td>
+                                        <td><?php echo $start;?></td>
+                                        <td><?php echo $end;?></td>
+                                        <td><?php echo $area;?></td>
+                                        <td><?php echo $sheet[$i];?></td>
+                                        <td>
+                                            <?php 
+                                            if($sheet[$i]=='工作紀錄表'){
+                                                echo "<input type='button' class='btn btn-success' value='PDF' onclick='window.location.href=\"$downloadurl\"'/> ";}
+                                            else {echo "無資料";}
+                                            ?>
+                                        </td>
+                                    </tr> 
+                                    <?php
+                                    }
+                                }
+
+                                else{
+                                    ?>
+                                    <tr>
+                                        <td>查無結果</td>
+                                    </tr>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

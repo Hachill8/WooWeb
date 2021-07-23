@@ -22,7 +22,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>    
-    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>    
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  
 
     
 </head>
@@ -413,52 +413,46 @@
     <!-- Main content -->
     <div class="wrapper">
         <div id="page-content-wraper" class="h-vh">
-            <div class="container bg-white p-3">
-                <h4 class="mb-4">生產履歷</h4>
-                <ul class="nav nav-tabs mb-4">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">&nbsp;&nbsp;作物紀錄&nbsp;&nbsp;</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./downloadpdf.php">檔案下載</a>
-                    </li>
-                </ul>
-            
-                <div class="container-fluid">
+            <div class="container bg-white p-3 mw-100" style="margin-top: 20px;">
+                <!-- <h4 class="mb-4">生產履歷</h4> -->
+                <div class="container-fluid " >
+                    <ul class="nav nav-tabs mb-4">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">&nbsp;&nbsp;作物紀錄&nbsp;&nbsp;</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./downloadpdf.php">檔案下載</a>
+                        </li>
+                    </ul>        
+                    <div class="col-md-2">
+                        <button type="button" style="margin-bottom:5px;" class="btn btn-success" data-bs-toggle="modal" 
+                            data-bs-target="#addrecordeModal">
+                            <i class="fas fa-plus"></i>
+                            新增紀錄
+                        </button>
+                    </div>
+                    
                     <div class="row">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-1"></div>
-                                <div class="col-md-8">
-                                    <button type="button" style="margin-bottom:40px;" class="btn btn-success" data-bs-toggle="modal" 
-                                        data-bs-target="#addrecordeModal">
-                                        <i class="fas fa-plus"></i>
-                                        新增紀錄
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-1"></div>
-                                <div class="col-md-10">
-                                    <table id="dtable" class="table">
-                                        <thead>
-                                            <th>ID</th>
-                                            <th>作業日期</th>
-                                            <th>田區編號</th>
-                                            <th>工作項目</th>
-                                            <th>作業人員</th>
-                                            <th></th>
-                                        </thead>
-                                        <tbody>
-                                            
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="col-md-1"></div>
-                                </div>
-                            </div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-12">
+                            <table id="dtable" class="table">
+                                <thead>
+                                    <th>ID</th>
+                                    <th>作業日期</th>
+                                    <th>田區編號</th>
+                                    <th>工作項目</th>
+                                    <th>作業人員</th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-2"></div>
                         </div>
                     </div>
+                     
                 </div>
             </div>
         </div>
@@ -480,6 +474,25 @@
                 'url':'fetch_data.php',
                 'type':'post',
             },
+            "dom": `<'row'<'col-md-6'l><'col-md-6'f>>
+            <'row'<'col-sm-12'tr>>
+            <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>`,
+            'language':{
+            "processing": "處理中...",
+            "loadingRecords": "載入中...",
+            "lengthMenu": "顯示 _MENU_ 項結果",
+            "zeroRecords": "沒有符合的結果",
+            "info": "顯示第 _START_ 至 _END_ 項結果，共 _TOTAL_ 項",
+            "infoEmpty": "顯示第 0 至 0 項結果，共 0 項",
+            "infoFiltered": "(從 _MAX_ 項結果中過濾)",
+            "infoPostFix": "",
+            "search": "搜尋:",
+            "paginate": {
+                "first": "第一頁",
+                "previous": "上一頁",
+                "next": "下一頁",
+                "last": "最後一頁"
+            },
             'fnCreatedRow':function(nRow,aData,iDataIndex)
             {
                 $(nRow).attr('id',aData[0]);
@@ -489,6 +502,7 @@
                 'target':[0,5],
                 'orderable':false,
             }]
+        }
         });
     </script>
 
@@ -618,6 +632,25 @@
     }
   });
     </script>
+
+    <!--history start-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script language="JavaScript" src="mainpage.js" type="text/javascript" charset="UTF-8"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha512-n6dYFOG599s4/mGlA6E+YLgtg9uPTOMDUb0IprSMDYVLr0ctiRryPEQ8gpM4DCMlx7M2G3CK+ZcaoOoJolzdCg==" crossorigin="anonymous"></script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="traceability.js"></script>
+    <!--history end-->
     <!-- add record modal -->
     <!-- Modal -->
     <div class="modal fade" id="addrecordeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -738,24 +771,7 @@
     </div>
 
     <!-- edit record modal end -->
-    <!--history start-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script language="JavaScript" src="mainpage.js" type="text/javascript" charset="UTF-8"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha512-n6dYFOG599s4/mGlA6E+YLgtg9uPTOMDUb0IprSMDYVLr0ctiRryPEQ8gpM4DCMlx7M2G3CK+ZcaoOoJolzdCg==" crossorigin="anonymous"></script>
-   
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous"></script>
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="traceability.js"></script>
-    <!--history end-->
+    
     <!-- End main content -->
     
 </body>
